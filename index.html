@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Achou PMW Landing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+/* Layout: uma coluna estreita, cartão do formulário no centro, painel de teste abaixo */
+:root {
+  --bg: #f3f6f4;
+  --surface: #ffffff;
+  --fg: #142019;
+  --muted: #5b6b62;
+  --line: #d9e2dc;
+  --accent: #127a52;
+  --accent-ink: #ffffff;
+  --test: #fff6d9;
+  --test-line: #e8d58f;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1612; --surface: #17211b; --fg: #e6efe9; --muted: #9db0a5; --line: #2a3a31;
+    --accent: #3fbf87; --accent-ink: #06130c; --test: #2a2614; --test-line: #5c5124; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1612; --surface: #17211b; --fg: #e6efe9; --muted: #9db0a5; --line: #2a3a31;
+  --accent: #3fbf87; --accent-ink: #06130c; --test: #2a2614; --test-line: #5c5124; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0;
+  background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 480px; margin: 0 auto; padding-block: 40px 56px; display: grid; gap: 28px; }
+.marca { font-family: var(--display); font-weight: 800; font-size: 18px; letter-spacing: -0.01em; }
+.marca span { color: var(--accent); }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 8vw, 40px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+.lead { color: var(--muted); margin: 10px 0 0; max-width: 40ch; }
+.cartao { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 16px; }
+label { display: grid; gap: 6px; font-weight: 600; font-size: 14px; }
+label small { font-weight: 400; color: var(--muted); }
+input[type="text"], input[type="tel"], input[type="email"] {
+  font: inherit; font-weight: 400; color: var(--fg); background: var(--bg); border: 1px solid var(--line);
+  border-radius: 10px; padding: 12px 14px; width: 100%;
+}
+input:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.lgpd { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: 13px; color: var(--muted); }
+.lgpd input { margin-top: 3px; accent-color: var(--accent); }
+.botao {
+  font: inherit; font-weight: 600; font-size: 17px; border: 0; border-radius: 10px; padding: 15px 18px;
+  background: var(--accent); color: var(--accent-ink); cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px;
+}
+a.botao { text-decoration: none; }
+.botao:hover { filter: brightness(1.06); }
+.detalhes { font-size: 12px; color: var(--muted); margin: -6px 0 0; }
+.detalhes a, .rodape a { color: var(--accent); }
+.rodape p { margin: 6px 0 0; }
+.erro { color: #c0392b; font-size: 14px; margin: 0; }
+.rodape { color: var(--muted); font-size: 13px; }
+.teste { background: var(--test); border: 1px dashed var(--test-line); border-radius: 14px; padding: 18px; display: grid; gap: 12px; }
+.teste h2 { font-family: var(--display); font-size: 16px; margin: 0; }
+.teste p { margin: 0; font-size: 14px; color: var(--muted); }
+.sim { display: flex; flex-wrap: wrap; gap: 8px; }
+.sim button { font: inherit; font-size: 13px; border: 1px solid var(--test-line); background: var(--surface); color: var(--fg); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.sim button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+pre { font-family: var(--mono); font-size: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin: 0; overflow-x: auto; white-space: pre; }
+.status { font-size: 14px; font-weight: 600; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<main class="wrap">
+  <div class="marca">Achou <span>PMW</span></div>
+
+  <header>
+    <h1>Achou a oferta? Fale direto com quem anunciou.</h1>
+    <p class="lead">Deixe seu nome e telefone e continue a conversa pelo WhatsApp. Leva menos de um minuto.</p>
+  </header>
+
+  <form class="cartao" id="form" novalidate>
+    <label for="nome">Seu nome
+      <input type="text" id="nome" name="nome" autocomplete="name" maxlength="80" required>
+    </label>
+    <label for="telefone">WhatsApp com DDD
+      <input type="tel" id="telefone" name="telefone" autocomplete="tel" inputmode="tel" placeholder="(63) 9 9999-9999" maxlength="20" required>
+    </label>
+    <label for="email">E-mail <small>(opcional)</small>
+      <input type="email" id="email" name="email" autocomplete="email" maxlength="120">
+    </label>
+    <label class="lgpd" for="aceite">
+      <input type="checkbox" id="aceite" required>
+      <span>Pela LGPD, precisamos da sua autorização. Ao marcar, você concorda em se comunicar com nossa empresa por e-mail ou WhatsApp.</span>
+    </label>
+    <p class="detalhes">Confira os detalhes na <a href="#privacidade">Política de Privacidade</a>.</p>
+    <p class="erro" id="erro" hidden></p>
+    <button class="botao" type="submit" id="enviar">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3Z"/></svg>
+      Continuar no WhatsApp
+    </button>
+  </form>
+
+  <section class="teste" id="painel" aria-labelledby="painel-titulo">
+    <h2 id="painel-titulo">Modo teste</h2>
+    <p>Este quadro só aparece em teste. Escolha de onde a visita "veio" e veja os dados que a página mandaria para o Make.</p>
+    <div class="sim" role="group" aria-label="Simular origem">
+      <button type="button" data-sim="direto" aria-pressed="true">Acesso direto</button>
+      <button type="button" data-sim="google_ads" aria-pressed="false">Anúncio Google</button>
+      <button type="button" data-sim="youtube" aria-pressed="false">YouTube</button>
+      <button type="button" data-sim="google_organico" aria-pressed="false">Busca Google</button>
+      <button type="button" data-sim="facebook" aria-pressed="false">Anúncio Meta</button>
+    </div>
+    <p class="status" id="status">Nada enviado ainda.</p>
+    <a class="botao" id="abrir" href="#" target="_blank" rel="noopener" hidden>Abrir a conversa no WhatsApp</a>
+    <pre id="dados"></pre>
+  </section>
+
+  <section class="rodape" id="privacidade">
+    <strong>Política de Privacidade (rascunho de teste)</strong>
+    <p>Guardamos nome, telefone, e-mail, a origem da visita (anúncio ou busca) e dados do aparelho para atender você e medir a qualidade dos nossos anúncios. Para essa medição, os dados são enviados de forma protegida ao Facebook (Meta) e ao Google. Não vendemos seus dados. Para pedir a exclusão, fale conosco pelo WhatsApp.</p>
+  </section>
+</main>
+
+<script>
+(function () {
+  // ===== CONFIGURAÇÃO (preencher antes de usar de verdade) =====
+  var WEBHOOK_URL = "https://hook.us2.make.com/h9qhghs5bvnbo5das30wfoibky1tfhy9";            // endereço do webhook "landing_page_google" do Make
+  var WHATSAPP = "556392191902";  // número que recebe a conversa, só dígitos, com 55 e DDD
+  var MODO_TESTE = true;           // true = mostra o quadro de teste e não envia nada sem webhook
+  // =============================================================
+
+  var CHAVES = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "gbraid", "wbraid", "fbclid"];
+  var agora = Date.now();
+
+  function lerCookie(nome) {
+    var m = document.cookie.match(new RegExp("(?:^|; )" + nome + "=([^;]*)"));
+    return m ? decodeURIComponent(m[1]) : "";
+  }
+  function gravarCookie(nome, valor) {
+    try { document.cookie = nome + "=" + encodeURIComponent(valor) + "; max-age=" + 60 * 60 * 24 * 90 + "; path=/; SameSite=Lax" + (location.protocol === "https:" ? "; Secure" : ""); } catch (e) {}
+  }
+  function guardado() {
+    try { return JSON.parse(localStorage.getItem("lp_origem") || "null"); } catch (e) { return null; }
+  }
+  function guardar(obj) {
+    try { localStorage.setItem("lp_origem", JSON.stringify(obj)); } catch (e) {}
+  }
+  function aleatorio(n) {
+    var letras = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789", s = "", a = new Uint8Array(n);
+    crypto.getRandomValues(a);
+    for (var i = 0; i < n; i++) s += letras[a[i] % letras.length];
+    return s;
+  }
+
+  // Marcas que vieram no link da visita (primeira visita vale; uma nova marca de clique substitui)
+  function lerLink(params) {
+    var o = {};
+    CHAVES.forEach(function (k) { var v = params.get(k); if (v) o[k] = v.slice(0, 500); });
+    return o;
+  }
+
+  function descobrirOrigem(o, referrer) {
+    if (o.gclid || o.gbraid || o.wbraid) return "google_ads";
+    var src = (o.utm_source || "").toLowerCase();
+    if (src.indexOf("youtube") > -1 || /youtube\.com|youtu\.be/.test(referrer)) return "youtube";
+    if (o.fbclid || src === "facebook" || src === "instagram" || src === "meta") return "meta_ads";
+    if (/google\./.test(referrer)) return "google_organico";
+    if (src) return src;
+    return "landing_page";
+  }
+
+  var dadosLink = lerLink(new URLSearchParams(location.search));
+  var anterior = guardado();
+  if (!anterior || dadosLink.gclid || dadosLink.gbraid || dadosLink.wbraid || dadosLink.fbclid || dadosLink.utm_source) {
+    anterior = Object.assign({ pagina_anterior: document.referrer || "", primeira_visita: new Date(agora).toISOString() }, dadosLink);
+    guardar(anterior);
+  }
+
+  // Marcas do Facebook (fbp = navegador, fbc = clique no anúncio)
+  var fbp = lerCookie("_fbp");
+  if (!fbp) { fbp = "fb.1." + agora + "." + Math.floor(Math.random() * 1e10); gravarCookie("_fbp", fbp); }
+  var fbc = lerCookie("_fbc");
+  if (anterior.fbclid && (!fbc || fbc.split(".").pop() !== anterior.fbclid)) { fbc = "fb.1." + agora + "." + anterior.fbclid; gravarCookie("_fbc", fbc); }
+
+  var codigo = "LP-" + aleatorio(6);
+  var simulado = null;
+
+  var SIMULACOES = {
+    direto: {},
+    google_ads: { gclid: "TESTE_gclid_" + aleatorio(8), utm_source: "google", utm_medium: "cpc", utm_campaign: "teste_google", utm_term: "oferta palmas" },
+    youtube: { utm_source: "youtube", utm_medium: "video", utm_campaign: "teste_youtube" },
+    google_organico: { pagina_anterior: "https://www.google.com/" },
+    facebook: { fbclid: "TESTE_fbclid_" + aleatorio(8), utm_source: "facebook", utm_medium: "paid", utm_campaign: "teste_meta" }
+  };
+
+  function montar() {
+    var o = Object.assign({}, anterior, simulado || {});
+    var ref = o.pagina_anterior || "";
+    var f = fbc;
+    if (simulado && simulado.fbclid) f = "fb.1." + agora + "." + simulado.fbclid;
+    var d = {
+      nome: document.getElementById("nome").value.trim(),
+      telefone: document.getElementById("telefone").value.replace(/\D/g, ""),
+      email: document.getElementById("email").value.trim().toLowerCase(),
+      codigo_visita: codigo,
+      origem: descobrirOrigem(o, ref),
+      gclid: o.gclid || "", gbraid: o.gbraid || "", wbraid: o.wbraid || "",
+      fbclid: o.fbclid || "", fbc: f || "", fbp: fbp,
+      utm_source: o.utm_source || "", utm_medium: o.utm_medium || "", utm_campaign: o.utm_campaign || "",
+      utm_term: o.utm_term || "", utm_content: o.utm_content || "",
+      pagina_url: location.href.split("#")[0],
+      pagina_anterior: ref,
+      aparelho: navigator.userAgent,
+      horario: new Date().toISOString(),
+      teste: MODO_TESTE
+    };
+    return d;
+  }
+
+  var painel = document.getElementById("painel");
+  var pre = document.getElementById("dados");
+  var status = document.getElementById("status");
+  if (!MODO_TESTE) painel.hidden = true;
+
+  function mostrar() { pre.textContent = JSON.stringify(montar(), null, 2); }
+  mostrar();
+  ["nome", "telefone", "email"].forEach(function (id) { document.getElementById(id).addEventListener("input", mostrar); });
+
+  document.querySelectorAll("[data-sim]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll("[data-sim]").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true");
+      var s = SIMULACOES[b.getAttribute("data-sim")];
+      simulado = Object.keys(s).length ? Object.assign({ gclid: "", gbraid: "", wbraid: "", fbclid: "", utm_source: "", utm_medium: "", utm_campaign: "", utm_term: "", utm_content: "", pagina_anterior: "" }, s) : null;
+      mostrar();
+    });
+  });
+
+  var erro = document.getElementById("erro");
+  function falha(msg) { erro.textContent = msg; erro.hidden = false; }
+
+  document.getElementById("form").addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    erro.hidden = true;
+    var d = montar();
+    if (d.nome.length < 2) return falha("Escreva seu nome.");
+    if (d.telefone.length < 10 || d.telefone.length > 13) return falha("Confira o telefone com DDD. Exemplo: (63) 9 9999-9999.");
+    if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return falha("Confira o e-mail ou deixe em branco.");
+    if (!document.getElementById("aceite").checked) return falha("Marque a caixa de concordância para continuar.");
+    if (d.telefone.length <= 11) d.telefone = "55" + d.telefone;
+
+    var texto = "Olá! Vim pela página e quero saber mais sobre a oferta. (cód. " + codigo + ")";
+    var link = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto);
+
+    if (WEBHOOK_URL) {
+      try {
+        var corpo = new URLSearchParams();
+        Object.keys(d).forEach(function (k) { corpo.append(k, String(d[k])); });
+        fetch(WEBHOOK_URL, { method: "POST", mode: "no-cors", body: corpo, keepalive: true })
+          .then(function () { status.textContent = "Enviado ao Make."; })
+          .catch(function () { status.textContent = "Não foi possível falar com o Make."; });
+      } catch (e) { status.textContent = "Não foi possível falar com o Make."; }
+    } else {
+      status.textContent = "Teste: nada foi enviado, porque o endereço do Make ainda está vazio. Estes são os dados que iriam:";
+    }
+    pre.textContent = JSON.stringify(d, null, 2);
+    if (MODO_TESTE) {
+      var a = document.getElementById("abrir");
+      a.href = link; a.hidden = false;
+    } else {
+      window.location.href = link;
+    }
+  });
+})();
+</script>
+</body>
+</html>
