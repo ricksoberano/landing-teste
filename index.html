@@ -7,129 +7,187 @@
 <title>Achou PMW Landing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap">
 <style>
-/* Layout: uma coluna estreita, cartão do formulário no centro, painel de teste abaixo */
+/* Layout: faixa correndo no topo, título condensado com dados ao lado, imagem à esquerda e formulário à direita. Visual escuro de propósito (tema único). */
 :root {
-  --bg: #f3f6f4;
-  --surface: #ffffff;
-  --fg: #142019;
-  --muted: #5b6b62;
-  --line: #d9e2dc;
-  --accent: #127a52;
-  --accent-ink: #ffffff;
-  --test: #fff6d9;
-  --test-line: #e8d58f;
-  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --bg: #04070f;
+  --bg-2: #0a1430;
+  --panel: rgba(20, 28, 52, 0.72);
+  --field: #0b1122;
+  --line: rgba(120, 150, 255, 0.18);
+  --fg: #f2f5ff;
+  --muted: #9aa6c8;
+  --blue: #2f6bff;
+  --blue-soft: #5b8cff;
+  --green: #1fbf2a;
+  --green-ink: #ffffff;
+  --display: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --body: "Archivo", "Segoe UI", system-ui, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0f1612; --surface: #17211b; --fg: #e6efe9; --muted: #9db0a5; --line: #2a3a31;
-    --accent: #3fbf87; --accent-ink: #06130c; --test: #2a2614; --test-line: #5c5124; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0f1612; --surface: #17211b; --fg: #e6efe9; --muted: #9db0a5; --line: #2a3a31;
-  --accent: #3fbf87; --accent-ink: #06130c; --test: #2a2614; --test-line: #5c5124; color-scheme: dark;
+  color-scheme: dark;
 }
 * { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background:
+    radial-gradient(60% 50% at 25% 55%, rgba(47, 107, 255, 0.35), transparent 70%),
+    radial-gradient(50% 40% at 90% 10%, rgba(47, 107, 255, 0.12), transparent 70%),
+    var(--bg);
+  color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.5;
+  min-height: 100%;
+}
 [hidden] { display: none !important; }
-body { margin: 0;
-  background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.5;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
+.gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* Faixa correndo */
+.faixa { background: var(--blue); overflow: hidden; white-space: nowrap; border-bottom: 1px solid rgba(255,255,255,0.15); }
+.faixa-trilho { display: inline-flex; gap: 22px; padding-block: 8px; animation: correr 28s linear infinite; font-family: var(--display); font-size: 22px; letter-spacing: 0.01em; text-transform: uppercase; }
+.faixa-trilho span { display: inline-flex; align-items: center; gap: 22px; }
+.faixa-trilho span::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+.faixa-trilho .escuro { color: #0a1430; }
+@keyframes correr { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Topo com título e dados */
+.topo { max-width: 1180px; margin: 0 auto; padding-block: 44px 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 28px 40px; justify-content: center; }
+.marca { display: grid; gap: 8px; justify-items: center; }
+.selo { font-size: 10px; letter-spacing: 0.6em; text-transform: uppercase; border: 1px solid var(--blue-soft); border-radius: 999px; padding: 2px 14px 2px 20px; color: var(--muted); }
+.marca h1 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(40px, 7vw, 64px); line-height: 0.95; text-transform: uppercase; letter-spacing: 0.005em; text-align: center; }
+.marca h1 em { font-style: normal; color: var(--blue-soft); }
+.dados { display: flex; flex-wrap: wrap; border-top: 1px solid var(--line); }
+.dados div { padding: 14px 22px; border-left: 1px solid var(--line); font-family: var(--display); font-size: clamp(20px, 2.4vw, 30px); line-height: 1.05; text-transform: uppercase; color: #c9d3f2; }
+.dados div:first-child { border-left: 0; }
+
+/* Hero */
+.hero { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.15fr 1fr; gap: 32px; align-items: center; padding-block: 24px 48px; }
+.imagem { position: relative; min-width: 0; aspect-ratio: 1 / 1; max-width: 100%; display: grid; place-items: center; }
+.imagem::before { content: ""; position: absolute; inset: 12%; border-radius: 50%; background: radial-gradient(circle, rgba(47,107,255,0.55), transparent 65%); filter: blur(20px); }
+.imagem img { position: relative; width: 86%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 28px; border: 1px solid rgba(91,140,255,0.45); box-shadow: 0 0 0 8px rgba(47,107,255,0.08), 0 30px 80px rgba(0,0,0,0.6), 0 0 80px rgba(47,107,255,0.35); }
+.lado { display: grid; gap: 24px; min-width: 0; }
+.chamada { margin: 0; font-size: clamp(20px, 2.3vw, 27px); font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; text-wrap: balance; }
+.chamada em { font-style: normal; color: var(--blue-soft); }
+
+.cartao { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: grid; gap: 12px; backdrop-filter: blur(8px); }
+.campo { display: grid; gap: 4px; }
+.campo label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.cartao input[type="text"], .cartao input[type="tel"], .cartao input[type="email"] {
+  font: inherit; font-size: 15px; font-weight: 500; color: var(--fg); background: var(--field);
+  border: 1px solid var(--line); border-radius: 999px; padding: 12px 18px; width: 100%;
 }
-.wrap { max-width: 480px; margin: 0 auto; padding-block: 40px 56px; display: grid; gap: 28px; }
-.marca { font-family: var(--display); font-weight: 800; font-size: 18px; letter-spacing: -0.01em; }
-.marca span { color: var(--accent); }
-h1 { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 8vw, 40px); line-height: 1.05; letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
-.lead { color: var(--muted); margin: 10px 0 0; max-width: 40ch; }
-.cartao { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; gap: 16px; }
-label { display: grid; gap: 6px; font-weight: 600; font-size: 14px; }
-label small { font-weight: 400; color: var(--muted); }
-input[type="text"], input[type="tel"], input[type="email"] {
-  font: inherit; font-weight: 400; color: var(--fg); background: var(--bg); border: 1px solid var(--line);
-  border-radius: 10px; padding: 12px 14px; width: 100%;
-}
-input:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-.lgpd { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; font-size: 13px; color: var(--muted); }
-.lgpd input { margin-top: 3px; accent-color: var(--accent); }
+.cartao input::placeholder { color: #7f8bb0; }
+input:focus-visible, button:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid var(--blue-soft); outline-offset: 2px; }
+.lgpd { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--muted); margin-top: 4px; }
+.lgpd input { margin-top: 3px; accent-color: var(--blue); width: 16px; height: 16px; flex: none; }
+.detalhes { font-size: 12px; color: var(--muted); margin: 0; }
+.detalhes a, .rodape a { color: var(--blue-soft); }
+.erro { color: #ff7a7a; font-size: 14px; margin: 0; }
 .botao {
-  font: inherit; font-weight: 600; font-size: 17px; border: 0; border-radius: 10px; padding: 15px 18px;
-  background: var(--accent); color: var(--accent-ink); cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px;
+  font: inherit; font-weight: 700; font-size: 15px; letter-spacing: 0.18em; text-transform: uppercase;
+  border: 0; border-radius: 999px; padding: 18px 20px; background: var(--green); color: var(--green-ink);
+  cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; text-decoration: none;
+  box-shadow: 0 10px 30px rgba(31, 191, 42, 0.25); transition: transform 0.15s ease, filter 0.15s ease;
 }
-a.botao { text-decoration: none; }
-.botao:hover { filter: brightness(1.06); }
-.detalhes { font-size: 12px; color: var(--muted); margin: -6px 0 0; }
-.detalhes a, .rodape a { color: var(--accent); }
-.rodape p { margin: 6px 0 0; }
-.erro { color: #c0392b; font-size: 14px; margin: 0; }
-.rodape { color: var(--muted); font-size: 13px; }
-.teste { background: var(--test); border: 1px dashed var(--test-line); border-radius: 14px; padding: 18px; display: grid; gap: 12px; }
-.teste h2 { font-family: var(--display); font-size: 16px; margin: 0; }
+.botao:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.aviso { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--muted); margin: 4px 0 0; }
+.aviso svg { flex: none; margin-top: 2px; color: var(--blue-soft); }
+
+/* Quadro de teste */
+.teste-wrap { max-width: 1180px; margin: 0 auto; padding-block: 0 24px; }
+.teste { border: 1px dashed rgba(255, 210, 90, 0.5); border-radius: 14px; background: rgba(60, 50, 10, 0.25); padding: 14px 18px; }
+.teste summary { cursor: pointer; font-weight: 700; color: #ffd75a; }
+.teste-corpo { display: grid; gap: 12px; margin-top: 12px; }
 .teste p { margin: 0; font-size: 14px; color: var(--muted); }
 .sim { display: flex; flex-wrap: wrap; gap: 8px; }
-.sim button { font: inherit; font-size: 13px; border: 1px solid var(--test-line); background: var(--surface); color: var(--fg); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
-.sim button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
-pre { font-family: var(--mono); font-size: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin: 0; overflow-x: auto; white-space: pre; }
-.status { font-size: 14px; font-weight: 600; }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+.sim button { font: inherit; font-size: 13px; border: 1px solid var(--line); background: var(--field); color: var(--fg); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.sim button[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); }
+.status { font-size: 14px; font-weight: 600; color: var(--fg) !important; }
+pre { font-family: var(--mono); font-size: 12px; background: var(--field); border: 1px solid var(--line); border-radius: 10px; padding: 12px; margin: 0; overflow-x: auto; white-space: pre; color: #c9d3f2; }
+
+.rodape { max-width: 1180px; margin: 0 auto; padding-block: 8px 40px; color: var(--muted); font-size: 13px; }
+.rodape p { margin: 6px 0 0; max-width: 75ch; }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; padding-block: 8px 32px; }
+  .imagem { max-width: 380px; margin: 0 auto; width: 100%; }
+  .topo { padding-block: 28px 0; }
+  .dados { justify-content: center; }
+  .dados div { padding: 10px 14px; }
+}
+@media (prefers-reduced-motion: reduce) { .faixa-trilho { animation: none; } .botao { transition: none; } }
 </style>
 </head>
 <body>
 
-<main class="wrap">
-  <div class="marca">Achou <span>PMW</span></div>
 
-  <header>
-    <h1>Achou a oferta? Fale direto com quem anunciou.</h1>
-    <p class="lead">Deixe seu nome e telefone e continue a conversa pelo WhatsApp. Leva menos de um minuto.</p>
-  </header>
+<div class="faixa" aria-hidden="true">
+  <div class="faixa-trilho">
+    <span>Achou PMW</span><span class="escuro">Fale direto</span><span>Achou PMW</span><span class="escuro">Fale direto</span><span>Achou PMW</span><span class="escuro">Fale direto</span><span>Achou PMW</span><span class="escuro">Fale direto</span>
+    <span>Achou PMW</span><span class="escuro">Fale direto</span><span>Achou PMW</span><span class="escuro">Fale direto</span><span>Achou PMW</span><span class="escuro">Fale direto</span><span>Achou PMW</span><span class="escuro">Fale direto</span>
+  </div>
+</div>
 
-  <form class="cartao" id="form" novalidate>
-    <label for="nome">Seu nome
-      <input type="text" id="nome" name="nome" autocomplete="name" maxlength="80" required>
-    </label>
-    <label for="telefone">WhatsApp com DDD
-      <input type="tel" id="telefone" name="telefone" autocomplete="tel" inputmode="tel" placeholder="(63) 9 9999-9999" maxlength="20" required>
-    </label>
-    <label for="email">E-mail <small>(opcional)</small>
-      <input type="email" id="email" name="email" autocomplete="email" maxlength="120">
-    </label>
-    <label class="lgpd" for="aceite">
-      <input type="checkbox" id="aceite" required>
-      <span>Pela LGPD, precisamos da sua autorização. Ao marcar, você concorda em se comunicar com nossa empresa por e-mail ou WhatsApp.</span>
-    </label>
-    <p class="detalhes">Confira os detalhes na <a href="#privacidade">Política de Privacidade</a>.</p>
-    <p class="erro" id="erro" hidden></p>
-    <button class="botao" type="submit" id="enviar">
-      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3Z"/></svg>
-      Continuar no WhatsApp
-    </button>
-  </form>
+<header class="topo gutter">
+  <div class="marca">
+    <span class="selo">Achou PMW</span>
+    <h1>Achou a oferta? <em>Fale direto</em></h1>
+  </div>
+  <div class="dados">
+    <div>Direto com<br>quem anunciou</div>
+    <div>100%<br>gratuito</div>
+    <div>Atendimento<br>no WhatsApp</div>
+  </div>
+</header>
 
-  <section class="teste" id="painel" aria-labelledby="painel-titulo">
-    <h2 id="painel-titulo">Modo teste</h2>
-    <p>Este quadro só aparece em teste. Escolha de onde a visita "veio" e veja os dados que a página mandaria para o Make.</p>
-    <div class="sim" role="group" aria-label="Simular origem">
-      <button type="button" data-sim="direto" aria-pressed="true">Acesso direto</button>
-      <button type="button" data-sim="google_ads" aria-pressed="false">Anúncio Google</button>
-      <button type="button" data-sim="youtube" aria-pressed="false">YouTube</button>
-      <button type="button" data-sim="google_organico" aria-pressed="false">Busca Google</button>
-      <button type="button" data-sim="facebook" aria-pressed="false">Anúncio Meta</button>
-    </div>
-    <p class="status" id="status">Nada enviado ainda.</p>
-    <a class="botao" id="abrir" href="#" target="_blank" rel="noopener" hidden>Abrir a conversa no WhatsApp</a>
-    <pre id="dados"></pre>
-  </section>
+<main class="hero gutter">
+  <div class="imagem">
+    <img src="coelho.png" alt="Mascote coelho do Achou PMW" width="512" height="512">
+  </div>
 
-  <section class="rodape" id="privacidade">
-    <strong>Política de Privacidade (rascunho de teste)</strong>
-    <p>Guardamos nome, telefone, e-mail, a origem da visita (anúncio ou busca) e dados do aparelho para atender você e medir a qualidade dos nossos anúncios. Para essa medição, os dados são enviados de forma protegida ao Facebook (Meta) e ao Google. Não vendemos seus dados. Para pedir a exclusão, fale conosco pelo WhatsApp.</p>
-  </section>
+  <div class="lado">
+    <p class="chamada">Viu um anúncio e quer saber mais? Deixe seu contato e <em>converse direto com o anunciante</em> pelo WhatsApp, em menos de um minuto.</p>
+
+    <form class="cartao" id="form" novalidate>
+      <div class="campo"><label for="nome">Seu nome</label>
+        <input type="text" id="nome" name="nome" autocomplete="name" maxlength="80" placeholder="Seu nome" required></div>
+      <div class="campo"><label for="email">Seu e-mail (opcional)</label>
+        <input type="email" id="email" name="email" autocomplete="email" maxlength="120" placeholder="Seu melhor e-mail (opcional)"></div>
+      <div class="campo"><label for="telefone">Seu WhatsApp com DDD</label>
+        <input type="tel" id="telefone" name="telefone" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="Seu WhatsApp (DDD + telefone)" required></div>
+      <label class="lgpd" for="aceite">
+        <input type="checkbox" id="aceite" required>
+        <span>Pela LGPD, precisamos da sua autorização. Ao marcar, você concorda em se comunicar com nossa empresa por e-mail ou WhatsApp.</span>
+      </label>
+      <p class="detalhes">Confira os detalhes na <a href="#privacidade">Política de Privacidade</a>.</p>
+      <p class="erro" id="erro" hidden></p>
+      <button class="botao" type="submit" id="enviar">Quero falar no WhatsApp</button>
+      <p class="aviso"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 1 21h22L12 2Zm1 15h-2v-2h2v2Zm0-4h-2V9h2v4Z"/></svg>Você será levado para o WhatsApp com uma mensagem pronta. É só enviar.</p>
+    </form>
+  </div>
 </main>
+
+<section class="teste-wrap gutter" id="painel" aria-label="Modo teste">
+  <details class="teste">
+    <summary>Modo teste (só aparece enquanto testamos)</summary>
+    <div class="teste-corpo">
+      <p>Escolha de onde a visita "veio" e veja os dados que a página manda para o Make.</p>
+      <div class="sim" role="group" aria-label="Simular origem">
+        <button type="button" data-sim="direto" aria-pressed="true">Acesso direto</button>
+        <button type="button" data-sim="google_ads" aria-pressed="false">Anúncio Google</button>
+        <button type="button" data-sim="youtube" aria-pressed="false">YouTube</button>
+        <button type="button" data-sim="google_organico" aria-pressed="false">Busca Google</button>
+        <button type="button" data-sim="facebook" aria-pressed="false">Anúncio Meta</button>
+      </div>
+      <p class="status" id="status">Nada enviado ainda.</p>
+      <a class="botao" id="abrir" href="#" target="_blank" rel="noopener" hidden>Abrir a conversa no WhatsApp</a>
+      <pre id="dados"></pre>
+    </div>
+  </details>
+</section>
+
+<footer class="rodape gutter" id="privacidade">
+  <strong>Política de Privacidade (rascunho de teste)</strong>
+  <p>Guardamos nome, telefone, e-mail, a origem da visita (anúncio ou busca) e dados do aparelho para atender você e medir a qualidade dos nossos anúncios. Para essa medição, os dados são enviados de forma protegida ao Facebook (Meta) e ao Google. Não vendemos seus dados. Para pedir a exclusão, fale conosco pelo WhatsApp.</p>
+</footer>
 
 <script>
 (function () {
