@@ -121,7 +121,107 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
   .dados { justify-content: center; }
   .dados div { padding: 10px 14px; }
 }
-@media (prefers-reduced-motion: reduce) { .faixa-trilho, .lente::after { animation: none; } .lente::after { display: none; } .botao { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .faixa-trilho, .lente::after, .digitando i { animation: none; } .zoom, .cortina, .zoom > *, .servico, .play { transition: none !important; } .lente::after { display: none; } .botao { transition: none; } }
+
+/* Serviços: 5 cartões clicáveis que abrem o chat com zoom */
+.servicos { max-width: 1180px; margin: 0 auto; padding-block: 16px 56px; }
+.servicos-topo { display: grid; gap: 10px; justify-items: center; text-align: center; margin-bottom: 28px; }
+.servicos-topo h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(34px, 5.5vw, 52px); line-height: 1; text-transform: uppercase; }
+.servicos-topo h2 em { font-style: normal; color: var(--blue-soft); }
+.servicos-topo p { margin: 0; color: var(--muted); max-width: 52ch; }
+.grade { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.grade li { grid-column: span 2; display: flex; }
+.grade li:nth-child(4) { grid-column: 2 / span 2; }
+.servico {
+  font: inherit; color: var(--fg); text-align: left; cursor: pointer; width: 100%;
+  background: linear-gradient(160deg, rgba(47,107,255,0.16), rgba(20,28,52,0.72) 55%);
+  border: 1px solid var(--line); border-radius: 18px; padding: 22px 22px 18px;
+  display: grid; grid-template-rows: auto 1fr auto; gap: 14px; position: relative; overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.servico::before { content: ""; position: absolute; inset: auto -30% -60% auto; width: 70%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(47,107,255,0.35), transparent 70%); pointer-events: none; }
+.servico:hover { transform: translateY(-3px); border-color: rgba(91,140,255,0.6); box-shadow: 0 18px 40px rgba(0,0,0,0.45), 0 0 40px rgba(47,107,255,0.25); }
+.num { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-size: 22px; background: var(--blue); color: #fff; box-shadow: 0 0 0 6px rgba(47,107,255,0.15); }
+.servico-texto { font-size: 18px; line-height: 1.3; color: #c9d3f2; }
+.servico-texto strong { display: block; font-family: var(--display); font-weight: 400; font-size: 30px; line-height: 1; text-transform: uppercase; color: var(--fg); margin-bottom: 6px; letter-spacing: 0.01em; }
+.saiba { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-soft); }
+.saiba svg { transition: transform 0.2s ease; }
+.servico:hover .saiba svg { transform: translateX(4px); }
+
+/* Zoom e janela do chat */
+.cortina { position: fixed; inset: 0; z-index: 40; background: rgba(2, 4, 10, 0.72); backdrop-filter: blur(6px); opacity: 0; transition: opacity 0.35s ease; }
+.cortina.aberta { opacity: 1; }
+.zoom {
+  position: fixed; z-index: 41; overflow: hidden; border-radius: 18px;
+  background: linear-gradient(160deg, #0d1a40, #070d1e 60%); border: 1px solid rgba(91,140,255,0.45);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.7), 0 0 80px rgba(47,107,255,0.3);
+  transition: top 0.5s cubic-bezier(.2,.8,.2,1), left 0.5s cubic-bezier(.2,.8,.2,1), width 0.5s cubic-bezier(.2,.8,.2,1), height 0.5s cubic-bezier(.2,.8,.2,1), border-radius 0.5s ease;
+  display: grid; grid-template-rows: auto 1fr;
+}
+.zoom > * { opacity: 0; transition: opacity 0.3s ease 0.25s; }
+.zoom.cheio > * { opacity: 1; }
+.chat-topo { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-bottom: 1px solid var(--line); background: rgba(47,107,255,0.08); }
+.chat-topo .num { width: 38px; height: 38px; font-size: 19px; flex: none; }
+.chat-titulo { min-width: 0; flex: 1; }
+.chat-titulo b { display: block; font-family: var(--display); font-weight: 400; font-size: 24px; line-height: 1.05; text-transform: uppercase; }
+.chat-titulo span { font-size: 13px; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+.chat-titulo span::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); }
+.fechar { flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--field); color: var(--fg); cursor: pointer; display: grid; place-items: center; }
+.fechar:hover { border-color: var(--blue-soft); }
+.chat-corpo { overflow-y: auto; padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; }
+.msg { display: flex; gap: 10px; align-items: flex-end; max-width: 86%; }
+.msg p { margin: 0; padding: 12px 16px; border-radius: 18px; font-size: 15px; line-height: 1.5; }
+.msg.ia p { background: var(--panel); border: 1px solid var(--line); border-bottom-left-radius: 6px; }
+.msg.voce { align-self: flex-end; }
+.msg.voce p { background: var(--blue); border-bottom-right-radius: 6px; }
+.avatar { flex: none; width: 34px; height: 34px; border-radius: 50%; overflow: hidden; border: 1px solid rgba(91,140,255,0.5); background: #0b1122; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; transform: scale(1.5); }
+.digitando p { display: flex; gap: 5px; padding: 16px; }
+.digitando i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); animation: pulo 1s ease-in-out infinite; }
+.digitando i:nth-child(2) { animation-delay: 0.15s; } .digitando i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes pulo { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-5px); opacity: 1; } }
+.sugestoes { display: flex; flex-wrap: wrap; gap: 8px; padding-left: 44px; }
+.sugestoes button { font: inherit; font-size: 13px; border: 1px solid rgba(91,140,255,0.5); background: transparent; color: var(--blue-soft); border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+.sugestoes button:hover { background: rgba(47,107,255,0.15); }
+.chat-rodape { border-top: 1px solid var(--line); padding: 12px 14px; display: grid; gap: 10px; }
+.chat-form { display: flex; gap: 8px; }
+.chat-form input { font: inherit; font-size: 15px; flex: 1; min-width: 0; color: var(--fg); background: var(--field); border: 1px solid var(--line); border-radius: 999px; padding: 12px 18px; }
+.chat-form input::placeholder { color: #7f8bb0; }
+.chat-form button { flex: none; width: 46px; height: 46px; border-radius: 50%; border: 0; background: var(--blue); color: #fff; cursor: pointer; display: grid; place-items: center; }
+.chat-whats { font-size: 13px; letter-spacing: 0.14em; padding: 12px 16px; }
+.selo-previa { font-family: var(--mono); font-size: 11px; color: #ffd75a; text-align: center; margin: 0; }
+
+/* Miniatura do vídeo no cartão */
+.cab { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.miniatura { position: relative; width: 52%; max-width: 200px; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: linear-gradient(135deg, #12204d, #070d1e); border: 1px solid rgba(91,140,255,0.45); flex: none; }
+.miniatura img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.miniatura::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,7,15,0) 35%, rgba(4,7,15,0.85)); }
+.play { position: absolute; z-index: 1; left: 50%; top: 42%; transform: translate(-50%, -50%); width: 34px; height: 34px; border-radius: 50%; background: rgba(47,107,255,0.92); display: grid; place-items: center; box-shadow: 0 0 16px rgba(47,107,255,0.7); transition: transform 0.2s ease; }
+.servico:hover .play { transform: translate(-50%, -50%) scale(1.12); }
+.mini-titulo { position: absolute; z-index: 1; left: 8px; right: 8px; bottom: 5px; font-size: 11px; font-weight: 600; line-height: 1.2; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Vídeo + chat lado a lado dentro do zoom */
+.zoom-area { display: grid; grid-template-columns: 1.3fr 1fr; min-height: 0; }
+.video-col { padding: 18px; border-right: 1px solid var(--line); display: grid; align-content: start; gap: 12px; min-width: 0; }
+.video { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: #000; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-titulo { margin: 0; font-weight: 700; font-size: 16px; }
+.video-col .video-nota { margin: 0; font-size: 13px; color: var(--muted); }
+.chat-col { display: grid; grid-template-rows: 1fr auto; min-height: 0; min-width: 0; }
+@media (max-width: 860px) {
+  .grade { grid-template-columns: 1fr; gap: 12px; }
+  .grade li, .grade li:nth-child(4) { grid-column: auto; }
+  .servico { padding: 18px; gap: 12px; }
+  .servico-texto { font-size: 16px; }
+  .servico-texto strong { font-size: 24px; }
+  .msg { max-width: 94%; }
+  .sugestoes { padding-left: 0; }
+  .zoom-area { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+  .video-col { padding: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  .video-col .video { border-radius: 0; border: 0; }
+  .video-col .video-titulo { display: none; }
+  .video-col .video-nota { display: none; }
+}
 </style>
 </head>
 <body>
@@ -176,6 +276,21 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
     </form>
   </div>
 </main>
+
+<section class="servicos gutter" id="servicos" aria-labelledby="servicos-titulo">
+  <div class="servicos-topo">
+    <span class="selo">Serviços</span>
+    <h2 id="servicos-titulo">Como posso <em>te ajudar</em></h2>
+    <p>Toque em um serviço para conversar com o nosso assistente e tirar suas dúvidas na hora.</p>
+  </div>
+  <ul class="grade">
+    <li><button class="servico" type="button" data-servico="0"><span class="cab"><span class="num">1</span></span><span class="servico-texto"><strong>Tutoriais</strong>simples, rápidos e acessíveis</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
+    <li><button class="servico" type="button" data-servico="1"><span class="cab"><span class="num">2</span></span><span class="servico-texto"><strong>Tela aberta</strong>eu e você, juntos, por 3 horas</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
+    <li><button class="servico" type="button" data-servico="2"><span class="cab"><span class="num">3</span></span><span class="servico-texto"><strong>Sistema de marketing</strong>pensado para o seu negócio</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
+    <li><button class="servico" type="button" data-servico="3"><span class="cab"><span class="num">4</span></span><span class="servico-texto"><strong>Comunidade</strong>para MEIs</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
+    <li><button class="servico" type="button" data-servico="4"><span class="cab"><span class="num">5</span></span><span class="servico-texto"><strong>Treine</strong>seu técnico de marketing comigo</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
+  </ul>
+</section>
 
 <section class="teste-wrap gutter" id="painel" aria-label="Modo teste">
   <details class="teste">
@@ -351,6 +466,136 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
       window.location.href = link;
     }
   });
+})();
+</script>
+<script>
+(function () {
+  // Prévia visual do chat. A IA ainda não está ligada: as respostas abaixo são textos de exemplo.
+  var SERVICOS = [
+    { titulo: "Tutoriais", sub: "simples, rápidos e acessíveis",
+      ola: "Oi! Os tutoriais são vídeos curtos e diretos, feitos para quem está começando. Você assiste no seu tempo, do celular ou do computador, e aplica na hora no seu negócio.",
+      video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
+      perguntas: ["Quanto tempo tem cada vídeo?", "Preciso saber alguma coisa antes?", "Como eu recebo o acesso?"] },
+    { titulo: "Tela aberta", sub: "eu e você, juntos, por 3 horas",
+      ola: "Oi! Aqui a gente faz uma chamada de 3 horas com a tela compartilhada. Você mostra o seu negócio e a gente monta e ajusta tudo junto, com você vendo cada passo.",
+      video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
+      perguntas: ["O que dá para fazer em 3 horas?", "Como marcamos o horário?", "Fica gravado?"] },
+    { titulo: "Sistema de marketing", sub: "pensado para o seu negócio",
+      ola: "Oi! O sistema de marketing é montado sob medida: anúncios levando para o WhatsApp, cada cliente anotado e as vendas avisadas para o Facebook e o Google, para os anúncios ficarem cada vez melhores.",
+      video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
+      perguntas: ["Funciona para o meu tipo de negócio?", "Preciso entender de tecnologia?", "Quanto tempo leva para ficar pronto?"] },
+    { titulo: "Comunidade", sub: "para MEIs",
+      ola: "Oi! A comunidade é um grupo de MEIs que trocam experiências sobre anúncios e vendas. Tem conteúdo novo, encontros ao vivo e espaço para tirar dúvidas.",
+      video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
+      perguntas: ["Como funciona a entrada?", "Tem encontros ao vivo?", "Preciso ter CNPJ de MEI?"] },
+    { titulo: "Treine seu técnico", sub: "de marketing comigo",
+      ola: "Oi! Se você já tem alguém que cuida do seu marketing, eu treino essa pessoa para montar e manter o sistema funcionando, sem depender de mim.",
+      video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
+      perguntas: ["Como é o treinamento?", "Quanto tempo dura?", "Meu técnico precisa de experiência?"] }
+  ];
+  var RESPOSTA = "(Prévia) Aqui a IA vai responder a sua pergunta. Por enquanto é só para ver como fica.";
+  var reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var foto = document.querySelector(".foto img");
+  var avatarSrc = foto ? foto.getAttribute("src") : "";
+  var aberto = null;
+
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  function avatar() { var a = el("span", "avatar"); var i = document.createElement("img"); i.src = avatarSrc; i.alt = ""; a.appendChild(i); return a; }
+  function msgIa(corpo, texto) {
+    var d = el("div", "msg ia digitando"); d.appendChild(avatar()); var p = el("p"); p.innerHTML = "<i></i><i></i><i></i>"; d.appendChild(p);
+    corpo.appendChild(d); corpo.scrollTop = corpo.scrollHeight;
+    return new Promise(function (ok) {
+      setTimeout(function () { d.className = "msg ia"; p.textContent = texto; corpo.scrollTop = corpo.scrollHeight; ok(); }, reduzir ? 0 : 900);
+    });
+  }
+  function msgVoce(corpo, texto) { var d = el("div", "msg voce"); d.appendChild(el("p", "", texto)); corpo.appendChild(d); corpo.scrollTop = corpo.scrollHeight; }
+
+  function alvo() {
+    var w = Math.min(1120, window.innerWidth - 32), h = Math.min(680, window.innerHeight - 32);
+    if (window.innerWidth < 600) { w = window.innerWidth; h = window.innerHeight; }
+    return { top: (window.innerHeight - h) / 2, left: (window.innerWidth - w) / 2, width: w, height: h, raio: window.innerWidth < 600 ? 0 : 22 };
+  }
+  function posicionar(z, r, raio) { z.style.top = r.top + "px"; z.style.left = r.left + "px"; z.style.width = r.width + "px"; z.style.height = r.height + "px"; if (raio != null) z.style.borderRadius = raio + "px"; }
+
+  function abrir(botao) {
+    var s = SERVICOS[+botao.dataset.servico], n = +botao.dataset.servico + 1;
+    var cortina = el("div", "cortina"); var z = el("div", "zoom");
+    z.setAttribute("role", "dialog"); z.setAttribute("aria-modal", "true"); z.setAttribute("aria-label", "Chat sobre " + s.titulo);
+    var topo = el("div", "chat-topo"); topo.appendChild(el("span", "num", String(n)));
+    var t = el("div", "chat-titulo"); t.appendChild(el("b", "", s.titulo + " " + s.sub)); t.appendChild(el("span", "", "Assistente online"));
+    topo.appendChild(t);
+    var fechar = el("button", "fechar"); fechar.type = "button"; fechar.setAttribute("aria-label", "Fechar");
+    fechar.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3z"/></svg>';
+    topo.appendChild(fechar);
+    var corpo = el("div", "chat-corpo"); corpo.setAttribute("aria-live", "polite");
+    var rodape = el("div", "chat-rodape");
+    var form = el("form", "chat-form"); var inp = el("input"); inp.type = "text"; inp.placeholder = "Escreva sua dúvida..."; inp.setAttribute("aria-label", "Sua dúvida");
+    var env = el("button"); env.type = "submit"; env.setAttribute("aria-label", "Enviar");
+    env.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 20.5V14l9-2-9-2V3.5L22 12z"/></svg>';
+    form.appendChild(inp); form.appendChild(env); rodape.appendChild(form);
+    var wa = el("a", "botao chat-whats", "Prefiro falar no WhatsApp"); wa.href = "#topo-form"; rodape.appendChild(wa);
+    rodape.appendChild(el("p", "selo-previa", "Prévia visual: a IA ainda não está ligada"));
+    var area = el("div", "zoom-area");
+    if (s.video) {
+      var vc = el("div", "video-col"); var v = el("div", "video");
+      var fr = document.createElement("iframe");
+      // youtube-nocookie = modo de privacidade do YouTube. O vídeo é criado no clique, então o navegador deixa tocar sozinho.
+      fr.src = "https://www.youtube-nocookie.com/embed/" + s.video + "?autoplay=1&playsinline=1&rel=0";
+      fr.title = s.videoTitulo; fr.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen"; fr.allowFullscreen = true;
+      v.appendChild(fr); vc.appendChild(v); vc.appendChild(el("p", "video-titulo", s.videoTitulo));
+      vc.appendChild(el("p", "video-nota", "Assista ao vídeo e tire suas dúvidas no chat ao lado."));
+      area.appendChild(vc);
+    }
+    var cc = el("div", "chat-col"); cc.appendChild(corpo); cc.appendChild(rodape); area.appendChild(cc);
+    z.appendChild(topo); z.appendChild(area);
+    document.body.appendChild(cortina); document.body.appendChild(z);
+    document.body.style.overflow = "hidden";
+
+    var r = botao.getBoundingClientRect();
+    posicionar(z, r, 18);
+    z.offsetWidth; // força o navegador a desenhar a posição inicial antes do zoom
+    var a = alvo(); posicionar(z, a, a.raio); cortina.classList.add("aberta");
+    setTimeout(function () {
+      z.classList.add("cheio"); if (window.innerWidth >= 600) inp.focus({ preventScroll: true }); else fechar.focus({ preventScroll: true });
+      msgIa(corpo, s.ola).then(function () {
+        var sug = el("div", "sugestoes");
+        s.perguntas.forEach(function (q) {
+          var b = el("button", "", q); b.type = "button";
+          b.addEventListener("click", function () { sug.remove(); perguntar(q); });
+          sug.appendChild(b);
+        });
+        corpo.appendChild(sug); corpo.scrollTop = corpo.scrollHeight;
+      });
+    }, reduzir ? 0 : 480);
+
+    function perguntar(q) { msgVoce(corpo, q); msgIa(corpo, RESPOSTA); }
+    form.addEventListener("submit", function (e) { e.preventDefault(); var q = inp.value.trim(); if (!q) return; inp.value = ""; var sg = corpo.querySelector(".sugestoes"); if (sg) sg.remove(); perguntar(q); });
+    wa.addEventListener("click", function (e) { e.preventDefault(); fecharTudo(); var f = document.getElementById("nome"); if (f) { f.scrollIntoView({ behavior: reduzir ? "auto" : "smooth", block: "center" }); setTimeout(function () { f.focus({ preventScroll: true }); }, 400); } });
+
+    function fecharTudo() {
+      if (!aberto) return; aberto = null;
+      z.classList.remove("cheio"); cortina.classList.remove("aberta");
+      var r2 = botao.getBoundingClientRect(); posicionar(z, r2, 18);
+      setTimeout(function () { z.remove(); cortina.remove(); document.body.style.overflow = ""; botao.focus({ preventScroll: true }); }, reduzir ? 0 : 500);
+    }
+    fechar.addEventListener("click", fecharTudo); cortina.addEventListener("click", fecharTudo);
+    aberto = { fechar: fecharTudo, z: z };
+  }
+
+  document.querySelectorAll(".servico").forEach(function (b) {
+    var s = SERVICOS[+b.dataset.servico], cab = b.querySelector(".cab");
+    if (s && s.video && cab) {
+      var m = el("span", "miniatura"); var im = document.createElement("img");
+      im.src = "https://i.ytimg.com/vi/" + s.video + "/hqdefault.jpg"; im.alt = ""; im.loading = "lazy";
+      im.onerror = function () { im.remove(); };
+      m.appendChild(im);
+      var pl = el("span", "play"); pl.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M8 5v14l11-7z"/></svg>';
+      m.appendChild(pl); m.appendChild(el("span", "mini-titulo", s.videoTitulo)); cab.appendChild(m);
+    }
+  });
+  document.querySelectorAll(".servico").forEach(function (b) { b.addEventListener("click", function () { if (!aberto) abrir(b); }); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && aberto) aberto.fechar(); });
+  window.addEventListener("resize", function () { if (aberto && aberto.z.classList.contains("cheio")) { var a = alvo(); aberto.z.style.transition = "none"; posicionar(aberto.z, a, a.raio); aberto.z.offsetWidth; aberto.z.style.transition = ""; } });
 })();
 </script>
 </body>
