@@ -431,7 +431,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 .redes { display: flex; gap: 10px; margin: -6px 0 24px; flex-wrap: wrap; }
 .rede { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(119,226,225,0.4); color: #77E2E1; text-decoration: none; font-size: 14px; font-weight: 600; background: rgba(119,226,225,0.06); transition: background .2s, color .2s; }
 .rede:hover { background: rgba(119,226,225,0.18); color: #fff; }
-.rede-texto { color: #77E2E1; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.rede-texto { color: #77E2E1; font-weight: 600; text-decoration: none; }
 .rede-texto svg { width: 16px; height: 16px; vertical-align: -2px; margin-left: 2px; }
 .rede-texto:hover { color: #fff; }
 .sobre-texto p { font-size: 17px; }
@@ -448,6 +448,9 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   .sobre-texto h2, .sobre-fecho { text-align: center; }
   .sobre-texto .provisorio { text-align: left; }
 }
+/* Texto justificado (reto dos dois lados) */
+.sobre-texto p { text-align: justify; hyphens: auto; -webkit-hyphens: auto; text-wrap: pretty; }
+@media (max-width: 600px) { .sobre-texto p { font-size: 16px; line-height: 1.6; } }
 </style>
 </head>
 <body>
@@ -519,7 +522,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   <div class="hud"><span>Sobre mim<i>//</i>Rick Ribeiro</span><span class="pag">03 / 03</span></div>
   <div class="sobre-grade">
     <div class="sobre-foto"><img src="sobre.webp" alt="Rick Ribeiro sorrindo enquanto usa o celular" width="800" height="796" loading="lazy"></div>
-    <div class="sobre-texto">
+    <div class="sobre-texto" lang="pt-BR">
       <h2 id="sobre-titulo">Prazer, <em>Rick Ribeiro</em></h2>
       <div class="redes"><a class="rede" href="https://www.instagram.com/rickribeiro.ads/" target="_blank" rel="noopener" aria-label="Instagram do Rick Ribeiro"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 4.6a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4Zm0 8.6a3.4 3.4 0 1 1 0-6.8 3.4 3.4 0 0 1 0 6.8Zm5.4-9.9a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/></svg><span>Instagram</span></a><a class="rede" href="https://www.youtube.com/@rickribeiroads5994" target="_blank" rel="noopener" aria-label="YouTube do Rick Ribeiro"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.7 15.1V8.9l5.8 3.1-5.8 3.1Z"/></svg><span>YouTube</span></a></div>
       <p>Sempre com os olhos atentos nos céus esperando a segunda vinda de Cristo. Maranata! Esposo de uma linda fotógrafa, <a class="rede-texto" href="https://www.instagram.com/marcelaabreufotografa/" target="_blank" rel="noopener">Marcela Abreu <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 4.6a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4Zm0 8.6a3.4 3.4 0 1 1 0-6.8 3.4 3.4 0 0 1 0 6.8Zm5.4-9.9a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/></svg></a>, e pai de dois meninos geniais. Três décadas atuando em vendas e marketing, desde 2017 trabalhando exclusivamente no mundo digital.</p>
