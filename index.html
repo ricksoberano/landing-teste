@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>Achou PMW Landing</title>
+<title>Rick Ribeiro Ads</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Anton&family=Unbounded:wght@900&family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Orbitron:wght@500;700&display=swap">
@@ -99,12 +99,6 @@ input:focus-visible, button:focus-visible, a:focus-visible, summary:focus-visibl
 .aviso { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; color: var(--muted); margin: 4px 0 0; }
 .aviso svg { flex: none; margin-top: 2px; color: var(--blue-soft); }
 
-/* Quadro de teste */
-.teste-wrap { max-width: 1180px; margin: 0 auto; padding-block: 0 24px; }
-.teste { border: 1px dashed rgba(255, 210, 90, 0.5); border-radius: 14px; background: rgba(60, 50, 10, 0.25); padding: 14px 18px; }
-.teste summary { cursor: pointer; font-weight: 700; color: #ffd75a; }
-.teste-corpo { display: grid; gap: 12px; margin-top: 12px; }
-.teste p { margin: 0; font-size: 14px; color: var(--muted); }
 .sim { display: flex; flex-wrap: wrap; gap: 8px; }
 .sim button { font: inherit; font-size: 13px; border: 1px solid var(--line); background: var(--field); color: var(--fg); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
 .sim button[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); }
@@ -393,6 +387,67 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   .hero { gap: 20px; }
   .imagem .etiqueta .logo { width: 160px; }
 }
+/* Experiência instantânea (painel que sobe ao tocar) */
+.ie-cortina { position: fixed; inset: 0; z-index: 90; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); opacity: 0; transition: opacity .35s ease; }
+.ie-cortina.aberta { opacity: 1; }
+.ie { position: fixed; z-index: 91; left: 50%; bottom: 0; width: min(640px, 100vw); height: min(92vh, 900px); transform: translate(-50%, 100%); transition: transform .45s cubic-bezier(.2,.8,.2,1);
+  background: radial-gradient(120% 60% at 50% 0%, #0f2a2a, #060a0a 60%, #000); color: #fff; border: 1px solid rgba(119,226,225,0.35); border-bottom: 0; border-radius: 22px 22px 0 0;
+  display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 -20px 60px rgba(0,0,0,0.6), 0 0 60px rgba(119,226,225,0.18); }
+.ie.aberta { transform: translate(-50%, 0); }
+.ie-topo { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px 10px; }
+.ie-alca { width: 44px; height: 5px; border-radius: 3px; background: rgba(255,255,255,0.25); position: absolute; left: 50%; top: 8px; transform: translateX(-50%); }
+.ie-marca { font-family: var(--mono, monospace); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: #77E2E1; }
+.ie-fechar { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.06); color: #fff; display: grid; place-items: center; cursor: pointer; }
+.ie-fechar:hover { background: rgba(255,255,255,0.14); }
+.ie-corpo { flex: 1; overflow-y: auto; padding: 8px 28px 28px; -webkit-overflow-scrolling: touch; }
+.ie-num { font-family: "Anton", var(--display); font-size: 64px; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(119,226,225,0.7); }
+.ie h2 { font-family: "Anton", var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(30px, 7vw, 42px); line-height: 1.05; margin: 6px 0 4px; letter-spacing: 0.01em; }
+.ie .ie-sub { margin: 0 0 22px; color: #77E2E1; font-weight: 600; font-size: 17px; }
+.ie .ie-intro { font-size: 18px; line-height: 1.5; margin: 0 0 26px; color: #e9f9f9; }
+.ie h3 { font-family: var(--mono, monospace); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: #FFD21F; margin: 0 0 12px; font-weight: 500; }
+.ie ul { list-style: none; margin: 0 0 26px; padding: 0; display: grid; gap: 10px; }
+.ie li { position: relative; padding: 12px 14px 12px 42px; border-radius: 12px; background: rgba(119,226,225,0.07); border: 1px solid rgba(119,226,225,0.18); line-height: 1.4; font-size: 16px; }
+.ie li::before { content: ""; position: absolute; left: 15px; top: 17px; width: 12px; height: 12px; border-radius: 50%; background: #77E2E1; box-shadow: 0 0 10px rgba(119,226,225,0.8); }
+.ie p { line-height: 1.55; font-size: 16px; color: #d7f8ff; }
+.ie-rodape { padding: 14px 20px calc(16px + env(safe-area-inset-bottom)); border-top: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.5); display: grid; gap: 8px; }
+.ie-rodape p { margin: 0; text-align: center; font-size: 14px; color: #c8d1d9; }
+.ie-rodape .botao { width: 100%; }
+.detalhes a { color: #77E2E1; }
+@media (max-width: 600px) { .ie { height: 100%; width: 100vw; border-radius: 0; border: 0; } .ie-corpo { padding: 4px 20px 24px; } }
+@media (prefers-reduced-motion: reduce) { .ie, .ie-cortina { transition: none; } }
+/* Seção Sobre mim */
+.sobre { max-width: 1180px; margin: 0 auto; padding-block: 96px 120px; }
+.sobre .hud { margin-bottom: 40px; }
+.sobre-grade { display: grid; grid-template-columns: 0.9fr 1fr; gap: 56px; align-items: center; }
+.sobre-foto { position: relative; }
+.sobre-foto::before { content: ""; position: absolute; inset: 10%; border-radius: 50%; background: radial-gradient(circle, rgba(119,226,225,0.45), transparent 65%); filter: blur(24px); }
+.sobre-foto img { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 28px; border: 1px solid rgba(119,226,225,0.45); box-shadow: 0 0 0 8px rgba(119,226,225,0.08), 0 30px 80px rgba(0,0,0,0.6); }
+.sobre-texto h2 { margin: 0 0 22px; font-family: "Anton", var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.1; color: #fff; }
+.sobre-texto h2 em { font-style: normal; color: var(--amarelo, #FFD21F); }
+.sobre-texto p { margin: 0 0 16px; font-size: 18px; line-height: 1.6; color: #d7f8ff; }
+.sobre-texto .provisorio { color: rgba(215,248,255,0.45); font-style: italic; border-left: 2px dashed rgba(119,226,225,0.4); padding-left: 14px; }
+.sobre-grade { align-items: center; }
+
+.redes { display: flex; gap: 10px; margin: -6px 0 24px; flex-wrap: wrap; }
+.rede { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(119,226,225,0.4); color: #77E2E1; text-decoration: none; font-size: 14px; font-weight: 600; background: rgba(119,226,225,0.06); transition: background .2s, color .2s; }
+.rede:hover { background: rgba(119,226,225,0.18); color: #fff; }
+.rede-texto { color: #77E2E1; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.rede-texto svg { width: 16px; height: 16px; vertical-align: -2px; margin-left: 2px; }
+.rede-texto:hover { color: #fff; }
+.sobre-texto p { font-size: 17px; }
+.sobre-fecho { margin-top: 26px !important; font-family: "Anton", var(--display); text-transform: uppercase; font-size: clamp(26px, 3.4vw, 36px) !important; line-height: 1.1 !important; color: #fff !important; }
+.sobre-fecho em { font-style: normal; color: var(--green, #25D366); }
+@media (max-width: 860px) {
+  .sobre-foto { position: relative; top: 0; }
+  .redes { justify-content: center; }
+  .sobre { padding-block: 64px 80px; }
+  .sobre .hud { justify-content: center; text-align: center; margin-bottom: 28px; }
+  .sobre-grade { grid-template-columns: 1fr; gap: 32px; }
+  .sobre-foto { max-width: 380px; margin: 0 auto; width: 100%; }
+  .sobre-texto { text-align: left; }
+  .sobre-texto h2, .sobre-fecho { text-align: center; }
+  .sobre-texto .provisorio { text-align: left; }
+}
 </style>
 </head>
 <body>
@@ -406,7 +461,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 </div>
 
 <header class="topo gutter">
-  <div class="hud"><span>Laboratório de vendas<i>//</i>Rick Ribeiro Ads</span><span class="pag">01 / 02</span></div>
+  <div class="hud"><span>Laboratório de vendas<i>//</i>Rick Ribeiro Ads</span><span class="pag">01 / 03</span></div>
   <span class="moldura moldura-esq" aria-hidden="true"><svg viewBox="0 0 230 150" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 146 V40 L30 14 H226"/><circle cx="4" cy="146" r="3" fill="currentColor"/><circle cx="226" cy="14" r="3" fill="currentColor"/><path d="M30 14 L40 4 H90" stroke-dasharray="2 4"/></svg></span>
   <span class="moldura moldura-dir" aria-hidden="true"><svg viewBox="0 0 230 150" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 146 V40 L30 14 H226"/><circle cx="4" cy="146" r="3" fill="currentColor"/><circle cx="226" cy="14" r="3" fill="currentColor"/></svg></span>
   <div class="marca">
@@ -437,7 +492,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
         <input type="checkbox" id="aceite" required>
         <span>Pela LGPD, precisamos da sua autorização. Ao marcar, você concorda em se comunicar com nossa empresa por e-mail ou WhatsApp.</span>
       </label>
-      <p class="detalhes">Confira os detalhes na <a href="#privacidade">Política de Privacidade</a>.</p>
+      <p class="detalhes"><a href="#privacidade" data-ie="privacidade">Veja a Política de Privacidade</a></p>
       <p class="erro" id="erro" hidden></p>
       <button class="botao" type="submit" id="enviar">Quero falar no WhatsApp</button>
       <p class="aviso"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 1 21h22L12 2Zm1 15h-2v-2h2v2Zm0-4h-2V9h2v4Z"/></svg>Você será levado para o WhatsApp com uma mensagem pronta. É só enviar.</p>
@@ -447,12 +502,12 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 
 <section class="servicos gutter" id="servicos" aria-labelledby="servicos-titulo">
   <div class="servicos-topo">
-    <div class="hud"><span>Serviços<i>//</i>Testados na prática</span><span class="pag">02 / 02</span></div>
+    <div class="hud"><span>Serviços<i>//</i>Testados na prática</span><span class="pag">02 / 03</span></div>
     <h2 id="servicos-titulo">Como posso <em>te ajudar</em></h2>
     <p>Toque em uma das opções para conhecer minhas soluções.</p>
   </div>
   <ul class="grade">
-    <li><button class="servico" type="button" data-servico="0"><span class="cab"><span class="num">01</span></span><span class="servico-texto"><strong>Aulas e tutoriais</strong>passo a passo, rápidos e acessíveis</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
+    <li><button class="servico" type="button" data-servico="0"><span class="cab"><span class="num">01</span></span><span class="servico-texto"><strong>Aulas e tutoriais</strong>passo a passo, rápido e acessível</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
     <li><button class="servico" type="button" data-servico="1"><span class="cab"><span class="num">02</span></span><span class="servico-texto"><strong>Consultoria de tela aberta</strong>pergunte tudo o que quiser por 3 horas</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
     <li><button class="servico" type="button" data-servico="2"><span class="cab"><span class="num">03</span></span><span class="servico-texto"><strong>Sistema de vendas</strong>pensado para o seu negócio</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
     <li><button class="servico" type="button" data-servico="3"><span class="cab"><span class="num">04</span></span><span class="servico-texto"><strong>Comunidade</strong>para empreendedores individuais</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
@@ -460,36 +515,34 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   </ul>
 </section>
 
-<section class="teste-wrap gutter" id="painel" aria-label="Modo teste">
-  <details class="teste">
-    <summary>Modo teste (só aparece enquanto testamos)</summary>
-    <div class="teste-corpo">
-      <p>Escolha de onde a visita "veio" e veja os dados que a página manda para o Make.</p>
-      <div class="sim" role="group" aria-label="Simular origem">
-        <button type="button" data-sim="direto" aria-pressed="true">Acesso direto</button>
-        <button type="button" data-sim="google_ads" aria-pressed="false">Anúncio Google</button>
-        <button type="button" data-sim="youtube" aria-pressed="false">YouTube</button>
-        <button type="button" data-sim="google_organico" aria-pressed="false">Busca Google</button>
-        <button type="button" data-sim="facebook" aria-pressed="false">Anúncio Meta</button>
-      </div>
-      <p class="status" id="status">Nada enviado ainda.</p>
-      <a class="botao" id="abrir" href="#" target="_blank" rel="noopener" hidden>Abrir a conversa no WhatsApp</a>
-      <pre id="dados"></pre>
+<section class="sobre gutter" id="sobre" aria-labelledby="sobre-titulo">
+  <div class="hud"><span>Sobre mim<i>//</i>Rick Ribeiro</span><span class="pag">03 / 03</span></div>
+  <div class="sobre-grade">
+    <div class="sobre-foto"><img src="sobre.webp" alt="Rick Ribeiro sorrindo enquanto usa o celular" width="800" height="796" loading="lazy"></div>
+    <div class="sobre-texto">
+      <h2 id="sobre-titulo">Prazer, <em>Rick Ribeiro</em></h2>
+      <div class="redes"><a class="rede" href="https://www.instagram.com/rickribeiro.ads/" target="_blank" rel="noopener" aria-label="Instagram do Rick Ribeiro"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 4.6a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4Zm0 8.6a3.4 3.4 0 1 1 0-6.8 3.4 3.4 0 0 1 0 6.8Zm5.4-9.9a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/></svg><span>Instagram</span></a><a class="rede" href="https://www.youtube.com/@rickribeiroads5994" target="_blank" rel="noopener" aria-label="YouTube do Rick Ribeiro"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.7 15.1V8.9l5.8 3.1-5.8 3.1Z"/></svg><span>YouTube</span></a></div>
+      <p>Sempre com os olhos atentos nos céus esperando a segunda vinda de Cristo. Maranata! Esposo de uma linda fotógrafa, <a class="rede-texto" href="https://www.instagram.com/marcelaabreufotografa/" target="_blank" rel="noopener">Marcela Abreu <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 4.6a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4Zm0 8.6a3.4 3.4 0 1 1 0-6.8 3.4 3.4 0 0 1 0 6.8Zm5.4-9.9a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/></svg></a>, e pai de dois meninos geniais. Três décadas atuando em vendas e marketing, desde 2017 trabalhando exclusivamente no mundo digital.</p>
+      <p>Já vendi desde roupas, acessórios, fastfood, livros, imóvel de luxo, pacote de viagens, cotas de resort, ensaios fotográficos, infoprodutos, consultoria, tratores, máquina de cartão, sites, consultas médicas, e por aí vai! Já gerenciei anúncios para centenas de negócios. Desde grandes marcas como: Chilli Beans, New Holland, Five Senses Resorts, Ferpam, dentre outras. Até os menores empreendedores, do tipo que vende bolo na feira. Se um produto ou serviço pode ser anunciado em alguma plataforma, lá eu estarei! O que você vende? Vamos anunciar?!</p>
     </div>
-  </details>
+  </div>
 </section>
 
-<footer class="rodape gutter" id="privacidade">
-  <strong>Política de Privacidade (rascunho de teste)</strong>
-  <p>Guardamos nome, telefone, e-mail, a origem da visita (anúncio ou busca) e dados do aparelho para atender você e medir a qualidade dos nossos anúncios. Para essa medição, os dados são enviados de forma protegida ao Facebook (Meta) e ao Google. Não vendemos seus dados. Para pedir a exclusão, fale conosco pelo WhatsApp.</p>
+<footer class="rodape gutter" id="privacidade" hidden>
+  <h2>Política de Privacidade</h2>
+  <h3>Quem é o responsável</h3><p>Rick Ribeiro Ads. Fale comigo pelo WhatsApp desta página.</p>
+  <h3>Quais dados guardamos</h3><ul><li>Seu e-mail</li><li>De onde veio a sua visita (anúncio ou busca)</li><li>Dados do aparelho usado para acessar a página</li></ul>
+  <h3>Para que usamos</h3><p>Para atender você e medir a qualidade dos nossos anúncios. Para essa medição, os dados são enviados de forma protegida ao Facebook (Meta) e ao Google.</p>
+  <h3>O que não fazemos</h3><p>Não vendemos seus dados.</p>
+  <h3>Seus direitos</h3><p>Você pode pedir para ver, corrigir ou apagar seus dados quando quiser. É só falar comigo pelo WhatsApp.</p>
 </footer>
 
 <script>
 (function () {
   // ===== CONFIGURAÇÃO (preencher antes de usar de verdade) =====
   var WEBHOOK_URL = "https://hook.us2.make.com/h9qhghs5bvnbo5das30wfoibky1tfhy9";            // endereço do webhook "landing_page_google" do Make
-  var WHATSAPP = "556392191902";  // número que recebe a conversa, só dígitos, com 55 e DDD
-  var MODO_TESTE = true;           // true = mostra o quadro de teste e não envia nada sem webhook
+  var WHATSAPP = "556399457700";  // número que recebe a conversa, só dígitos, com 55 e DDD
+  var MODO_TESTE = false;
   // =============================================================
 
   var CHAVES = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "gbraid", "wbraid", "fbclid"];
@@ -580,10 +633,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
     return d;
   }
 
-  var painel = document.getElementById("painel");
-  var pre = document.getElementById("dados");
-  var status = document.getElementById("status");
-  if (!MODO_TESTE) painel.hidden = true;
+  var pre = { textContent: "" }, status = { textContent: "" };
 
   function mostrar() { pre.textContent = JSON.stringify(montar(), null, 2); }
   mostrar();
@@ -609,7 +659,8 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return falha("Escreva um e-mail válido para continuar.");
     if (!document.getElementById("aceite").checked) return falha("Marque a caixa de concordância para continuar.");
 
-    var texto = "Olá! Vim pela página e quero saber mais sobre a oferta. (cód. " + codigo + ")";
+    var interesse = window.RR_INTERESSE || "";
+    var texto = interesse ? "Olá, Rick! Vim pelo seu site e tenho interesse em: " + interesse + ". (cód. " + codigo + ")" : "Olá, Rick! Vim pelo seu site e quero falar sobre as minhas vendas. (cód. " + codigo + ")";
     var link = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto);
 
     if (WEBHOOK_URL) {
@@ -635,132 +686,89 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 </script>
 <script>
 (function () {
-  // Prévia visual do chat. A IA ainda não está ligada: as respostas abaixo são textos de exemplo.
+  // Textos provisórios dos serviços (enquanto a IA não está ligada)
   var SERVICOS = [
-    { titulo: "Aulas e tutoriais", sub: "passo a passo, rápidos e acessíveis",
-      ola: "Oi! Os tutoriais são vídeos curtos e diretos, feitos para quem está começando. Você assiste no seu tempo, do celular ou do computador, e aplica na hora no seu negócio.",
-      video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
-      perguntas: ["Quanto tempo tem cada vídeo?", "Preciso saber alguma coisa antes?", "Como eu recebo o acesso?"] },
+    { titulo: "Aulas e tutoriais", sub: "passo a passo, rápido e acessível",
+      intro: "Conhecimento curto e direto, onde eu te ensino exatamente as ferramentas que eu utilizo para vendas digitais.",
+      lista_titulo: "O que você vai encontrar por aqui",
+      lista: ["Você já faz anúncios para WhatsApp?! Saiba porque você atrai leads ruins. E aprenda a atrair somente leads qualificados", "Para marqueteiros: mapa explicando meu fluxo de vendas pelo WhatsApp de ponta a ponta", "Você sabe programar?! Tenha acesso ao meu fluxo de vendas via código (copia e cola)", "Diretriz do criativo que vende: a Meta é a vendedora perfeita, mas ela precisa do \"panfleto\" correto"],
+      fim_titulo: "Para quem é", fim: "Quem já atua no digital e precisa daquela informação rápida, com passo a passo de conhecimento técnico direcionado em alguma área." },
     { titulo: "Consultoria de tela aberta", sub: "pergunte tudo o que quiser por 3 horas",
-      ola: "Oi! Aqui a gente faz uma chamada de 3 horas com a tela compartilhada. Você mostra o seu negócio e a gente monta e ajusta tudo junto, com você vendo cada passo.",
-      video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
-      perguntas: ["O que dá para fazer em 3 horas?", "Como marcamos o horário?", "Fica gravado?"] },
+      intro: "Uma consultoria por Google Meet. Você me mostra o seu negócio e suas principais dificuldades. Eu respondo tudo o que você perguntar, tiro todas as suas dúvidas na prática, sem esconder nada, ensinando com a tela aberta.",
+      lista_titulo: "Como funciona",
+      lista: ["Agendamos o melhor dia e hora pra você", "Fazemos uma chamada de vídeo por 3 horas", "Usamos esse tempo para os assuntos que você quiser", "Te dou um acompanhamento de 30 dias tirando outras dúvidas que surgirem por WhatsApp"],
+      fim_titulo: "Para quem é", fim: "Para quem já tem bagagem teórica, já consumiu conteúdos diversos, já está testando as coisas por conta própria, mas ainda tem dúvidas práticas sobre algumas coisas. E precisa fazer perguntas diretamente a alguém que tem experiência prática." },
     { titulo: "Sistema de vendas", sub: "pensado para o seu negócio",
-      ola: "Oi! O sistema de marketing é montado sob medida: anúncios levando para o WhatsApp, cada cliente anotado e as vendas avisadas para o Facebook e o Google, para os anúncios ficarem cada vez melhores.",
-      video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
-      perguntas: ["Funciona para o meu tipo de negócio?", "Preciso entender de tecnologia?", "Quanto tempo leva para ficar pronto?"] },
+      intro: "Um sistema montado sob medida para vender o seu produto/serviço: anúncios de prospecção, automações de atendimento, rastreamento de leads, remarketing, captura e tratamento de dados e relatórios de análise de dados.",
+      lista_titulo: "Sistema de 4 pilares",
+      lista: ["Criamos anúncios testados e validados que prospectam clientes compradores", "Otimizamos os processos de venda (automações de atendimento, bots, CRM...)", "Fazemos um rastreamento dos leads, captura de dados que viram inteligência acumulativa para os anúncios", "Armazenamos e tratamos os dados capturados para relatórios de análise e devolução de inteligência para os anúncios"],
+      fim_titulo: "Para quem é", fim: "Empresários com operações robustas e time de vendas, que já investem valores consideráveis em anúncios e desejam obter melhores resultados." },
     { titulo: "Comunidade", sub: "para empreendedores individuais",
-      ola: "Oi! A comunidade é um grupo de empreendedores individuais que trocam experiências sobre anúncios e vendas. Tem conteúdo novo, encontros ao vivo e espaço para tirar dúvidas.",
-      video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
-      perguntas: ["Como funciona a entrada?", "Tem encontros ao vivo?", "Preciso ter CNPJ de MEI?"] },
+      intro: "Ambiente criado para empreendedores individuais que precisam de ajuda nas vendas e gestão dos seus negócios.",
+      lista_titulo: "O que você acessa na comunidade",
+      lista: ["Eu vou programar um anúncio de prospecção para captar clientes para você. Isso mesmo! Você entra com a verba, eu faço o anúncio e você começa a receber os clientes", "Além disso, você vai acessar nosso encontro online mensal. Uma sala no Google Meet sempre com um novo especialista tirando dúvidas dos membros e ensinando algo de valor sobre negócios", "Acesso a todos os encontros gravados, com aulas práticas sobre os mais diversos assuntos do empreendedorismo"],
+      fim_titulo: "Para quem é", fim: "Empreendedores individuais que querem expandir, e que podem investir um pouco de dinheiro mensalmente para o crescimento do seu negócio." },
     { titulo: "Treine comigo", sub: "seu time de marketing e vendas",
-      ola: "Oi! Se você já tem alguém que cuida do seu marketing, eu treino essa pessoa para montar e manter o sistema funcionando, sem depender de mim.",
-      video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
-      perguntas: ["Como é o treinamento?", "Quanto tempo dura?", "Meu técnico precisa de experiência?"] }
+      intro: "Treinamento técnico para a pessoa ou a equipe que cuida do seu marketing e vendas, internamente na sua empresa.",
+      lista_titulo: "Como funciona",
+      lista: ["Fazemos um diagnóstico da sua operação. Qual a sua realidade, quem é seu time, como tudo funciona no dia a dia, suas dificuldades e objetivos", "Criamos um treinamento personalizado para a realidade do seu time. Nada genérico! Ferramentas práticas pra corrigir o que não funciona e otimizar o que já dá certo", "O treinamento vai de ponta a ponta. Desde a criação de anúncios nas principais plataformas da web, até ferramentas de atendimento dos clientes e análise de dados e relatórios", "Depois disso, acompanhamos seu time por um tempo, monitorando os resultados"],
+      fim_titulo: "Para quem é", fim: "Para empresas que têm um colaborador responsável técnico de marketing ou uma equipe interna de marketing e vendas, e desejam qualificá-los com as principais ferramentas de vendas do universo digital." }
   ];
-  var RESPOSTA = "(Prévia) Aqui a IA vai responder a sua pergunta. Por enquanto é só para ver como fica.";
   var reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var foto = document.querySelector(".foto img");
-  var avatarSrc = foto ? foto.getAttribute("src") : "";
   var aberto = null;
-
   function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
-  function avatar() { var a = el("span", "avatar"); var i = document.createElement("img"); i.src = avatarSrc; i.alt = ""; a.appendChild(i); return a; }
-  function msgIa(corpo, texto) {
-    var d = el("div", "msg ia digitando"); d.appendChild(avatar()); var p = el("p"); p.innerHTML = "<i></i><i></i><i></i>"; d.appendChild(p);
-    corpo.appendChild(d); corpo.scrollTop = corpo.scrollHeight;
-    return new Promise(function (ok) {
-      setTimeout(function () { d.className = "msg ia"; p.textContent = texto; corpo.scrollTop = corpo.scrollHeight; ok(); }, reduzir ? 0 : 900);
-    });
-  }
-  function msgVoce(corpo, texto) { var d = el("div", "msg voce"); d.appendChild(el("p", "", texto)); corpo.appendChild(d); corpo.scrollTop = corpo.scrollHeight; }
 
-  function alvo() {
-    var w = Math.min(1120, window.innerWidth - 32), h = Math.min(680, window.innerHeight - 32);
-    if (window.innerWidth < 600) { w = window.innerWidth; h = window.innerHeight; }
-    return { top: (window.innerHeight - h) / 2, left: (window.innerWidth - w) / 2, width: w, height: h, raio: window.innerWidth < 600 ? 0 : 22 };
-  }
-  function posicionar(z, r, raio) { z.style.top = r.top + "px"; z.style.left = r.left + "px"; z.style.width = r.width + "px"; z.style.height = r.height + "px"; if (raio != null) z.style.borderRadius = raio + "px"; }
-
-  function abrir(botao) {
-    var s = SERVICOS[+botao.dataset.servico], n = +botao.dataset.servico + 1;
-    var cortina = el("div", "cortina"); var z = el("div", "zoom");
-    z.setAttribute("role", "dialog"); z.setAttribute("aria-modal", "true"); z.setAttribute("aria-label", "Chat sobre " + s.titulo);
-    var topo = el("div", "chat-topo"); topo.appendChild(el("span", "num", "0" + n));
-    var t = el("div", "chat-titulo"); t.appendChild(el("b", "", s.titulo + " " + s.sub)); t.appendChild(el("span", "", "Assistente online"));
-    topo.appendChild(t);
-    var fechar = el("button", "fechar"); fechar.type = "button"; fechar.setAttribute("aria-label", "Fechar");
-    fechar.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3z"/></svg>';
-    topo.appendChild(fechar);
-    var corpo = el("div", "chat-corpo"); corpo.setAttribute("aria-live", "polite");
-    var rodape = el("div", "chat-rodape");
-    var form = el("form", "chat-form"); var inp = el("input"); inp.type = "text"; inp.placeholder = "Escreva sua dúvida..."; inp.setAttribute("aria-label", "Sua dúvida");
-    var env = el("button"); env.type = "submit"; env.setAttribute("aria-label", "Enviar");
-    env.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 20.5V14l9-2-9-2V3.5L22 12z"/></svg>';
-    form.appendChild(inp); form.appendChild(env); rodape.appendChild(form);
-    var wa = el("a", "botao chat-whats", "Prefiro falar no WhatsApp"); wa.href = "#topo-form"; rodape.appendChild(wa);
-    rodape.appendChild(el("p", "selo-previa", "Prévia visual: a IA ainda não está ligada"));
-    var area = el("div", "zoom-area");
-    if (s.video) {
-      var vc = el("div", "video-col"); var v = el("div", "video");
-      var fr = document.createElement("iframe");
-      // youtube-nocookie = modo de privacidade do YouTube. O vídeo é criado no clique, então o navegador deixa tocar sozinho.
-      fr.src = "https://www.youtube-nocookie.com/embed/" + s.video + "?autoplay=1&playsinline=1&rel=0";
-      fr.title = s.videoTitulo; fr.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen"; fr.allowFullscreen = true;
-      v.appendChild(fr); vc.appendChild(v); vc.appendChild(el("p", "video-titulo", s.videoTitulo));
-      vc.appendChild(el("p", "video-nota", "Assista ao vídeo e tire suas dúvidas no chat ao lado."));
-      area.appendChild(vc);
+  function abrir(conteudo, rotulo, origem, comBotao) {
+    if (aberto) return;
+    var cortina = el("div", "ie-cortina"), p = el("div", "ie");
+    p.setAttribute("role", "dialog"); p.setAttribute("aria-modal", "true"); p.setAttribute("aria-label", rotulo);
+    var topo = el("div", "ie-topo"); topo.appendChild(el("span", "ie-alca"));
+    topo.appendChild(el("span", "ie-marca", "Rick Ribeiro Ads"));
+    var x = el("button", "ie-fechar"); x.type = "button"; x.setAttribute("aria-label", "Fechar");
+    x.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3z"/></svg>';
+    topo.appendChild(x);
+    var corpo = el("div", "ie-corpo"); corpo.appendChild(conteudo);
+    p.appendChild(topo); p.appendChild(corpo);
+    if (comBotao) {
+      var rod = el("div", "ie-rodape"); rod.appendChild(el("p", "", "Ficou com alguma dúvida? Fale comigo."));
+      var b = el("a", "botao", "Quero falar no WhatsApp"); b.href = "#form";
+      b.addEventListener("click", function (e) { e.preventDefault(); if (typeof comBotao === "string") window.RR_INTERESSE = comBotao; fechar(function () {
+        var f = document.getElementById("email"); if (f) { f.scrollIntoView({ behavior: reduzir ? "auto" : "smooth", block: "center" }); setTimeout(function () { f.focus({ preventScroll: true }); }, 450); } }); });
+      rod.appendChild(b); p.appendChild(rod);
     }
-    var cc = el("div", "chat-col"); cc.appendChild(corpo); cc.appendChild(rodape); area.appendChild(cc);
-    z.appendChild(topo); z.appendChild(area);
-    document.body.appendChild(cortina); document.body.appendChild(z);
-    document.body.style.overflow = "hidden";
-
-    var r = botao.getBoundingClientRect();
-    posicionar(z, r, 18);
-    z.offsetWidth; // força o navegador a desenhar a posição inicial antes do zoom
-    var a = alvo(); posicionar(z, a, a.raio); cortina.classList.add("aberta");
-    setTimeout(function () {
-      z.classList.add("cheio"); if (window.innerWidth >= 600) inp.focus({ preventScroll: true }); else fechar.focus({ preventScroll: true });
-      msgIa(corpo, s.ola).then(function () {
-        var sug = el("div", "sugestoes");
-        s.perguntas.forEach(function (q) {
-          var b = el("button", "", q); b.type = "button";
-          b.addEventListener("click", function () { sug.remove(); perguntar(q); });
-          sug.appendChild(b);
-        });
-        corpo.appendChild(sug); corpo.scrollTop = corpo.scrollHeight;
-      });
-    }, reduzir ? 0 : 480);
-
-    function perguntar(q) { msgVoce(corpo, q); msgIa(corpo, RESPOSTA); }
-    form.addEventListener("submit", function (e) { e.preventDefault(); var q = inp.value.trim(); if (!q) return; inp.value = ""; var sg = corpo.querySelector(".sugestoes"); if (sg) sg.remove(); perguntar(q); });
-    wa.addEventListener("click", function (e) { e.preventDefault(); fecharTudo(); var f = document.getElementById("email"); if (f) { f.scrollIntoView({ behavior: reduzir ? "auto" : "smooth", block: "center" }); setTimeout(function () { f.focus({ preventScroll: true }); }, 400); } });
-
-    function fecharTudo() {
+    document.body.appendChild(cortina); document.body.appendChild(p); document.body.style.overflow = "hidden";
+    p.offsetWidth; cortina.classList.add("aberta"); p.classList.add("aberta");
+    setTimeout(function () { x.focus({ preventScroll: true }); }, reduzir ? 0 : 300);
+    function fechar(depois) {
       if (!aberto) return; aberto = null;
-      z.classList.remove("cheio"); cortina.classList.remove("aberta");
-      var r2 = botao.getBoundingClientRect(); posicionar(z, r2, 18);
-      setTimeout(function () { z.remove(); cortina.remove(); document.body.style.overflow = ""; botao.focus({ preventScroll: true }); }, reduzir ? 0 : 500);
+      cortina.classList.remove("aberta"); p.classList.remove("aberta");
+      setTimeout(function () { p.remove(); cortina.remove(); document.body.style.overflow = ""; if (depois) depois(); else if (origem) origem.focus({ preventScroll: true }); }, reduzir ? 0 : 420);
     }
-    fechar.addEventListener("click", fecharTudo); cortina.addEventListener("click", fecharTudo);
-    aberto = { fechar: fecharTudo, z: z };
+    x.addEventListener("click", function () { fechar(); }); cortina.addEventListener("click", function () { fechar(); });
+    aberto = { fechar: fechar };
   }
 
+  function servico(i) {
+    var s = SERVICOS[i], c = el("div");
+    c.appendChild(el("div", "ie-num", "0" + (i + 1)));
+    c.appendChild(el("h2", "", s.titulo)); c.appendChild(el("p", "ie-sub", s.sub));
+    c.appendChild(el("p", "ie-intro", s.intro));
+    c.appendChild(el("h3", "", s.lista_titulo));
+    var ul = el("ul"); s.lista.forEach(function (t) { ul.appendChild(el("li", "", t)); }); c.appendChild(ul);
+    if (s.fim) { c.appendChild(el("h3", "", s.fim_titulo)); c.appendChild(el("p", "", s.fim)); }
+    return c;
+  }
   document.querySelectorAll(".servico").forEach(function (b) {
-    var s = SERVICOS[+b.dataset.servico], cab = b.querySelector(".cab");
-    if (s && s.video && cab) {
-      var m = el("span", "miniatura"); var im = document.createElement("img");
-      im.src = "https://i.ytimg.com/vi/" + s.video + "/hqdefault.jpg"; im.alt = ""; im.loading = "lazy";
-      im.onerror = function () { im.remove(); };
-      m.appendChild(im);
-      var pl = el("span", "play"); pl.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M8 5v14l11-7z"/></svg>';
-      m.appendChild(pl); m.appendChild(el("span", "mini-titulo", s.videoTitulo)); cab.appendChild(m);
-    }
+    b.addEventListener("click", function () { var i = +b.dataset.servico; abrir(servico(i), SERVICOS[i].titulo, b, SERVICOS[i].titulo); });
   });
-  document.querySelectorAll(".servico").forEach(function (b) { b.addEventListener("click", function () { if (!aberto) abrir(b); }); });
+
+  var pol = document.getElementById("privacidade");
+  document.querySelectorAll('[data-ie="privacidade"]').forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      e.preventDefault(); var c = el("div"); c.innerHTML = pol.innerHTML; abrir(c, "Política de Privacidade", a, false);
+    });
+  });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && aberto) aberto.fechar(); });
-  window.addEventListener("resize", function () { if (aberto && aberto.z.classList.contains("cheio")) { var a = alvo(); aberto.z.style.transition = "none"; posicionar(aberto.z, a, a.raio); aberto.z.offsetWidth; aberto.z.style.transition = ""; } });
 })();
 </script>
 </body>
