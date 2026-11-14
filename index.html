@@ -7,7 +7,7 @@
 <title>Achou PMW Landing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Anton&family=Unbounded:wght@900&family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Orbitron:wght@500;700&display=swap">
 <style>
 /* Layout: faixa correndo no topo, título condensado com dados ao lado, imagem à esquerda e formulário à direita. Visual escuro de propósito (tema único). */
 :root {
@@ -42,7 +42,7 @@ body {
 
 /* Faixa correndo */
 .faixa { background: var(--blue); overflow: hidden; white-space: nowrap; border-bottom: 1px solid rgba(255,255,255,0.15); }
-.faixa-trilho { display: inline-flex; gap: 22px; padding-block: 8px; animation: correr 28s linear infinite; font-family: var(--display); font-size: 22px; letter-spacing: 0.01em; text-transform: uppercase; }
+.faixa-trilho { display: inline-flex; gap: 22px; padding-block: 8px; animation: correr 60s linear infinite; font-family: var(--display); font-size: 22px; letter-spacing: 0.01em; text-transform: uppercase; }
 .faixa-trilho span { display: inline-flex; align-items: center; gap: 22px; }
 .faixa-trilho span::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
 .faixa-trilho .escuro { color: #0a1430; }
@@ -61,13 +61,13 @@ body {
 /* Hero */
 .hero { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.15fr 1fr; gap: 32px; align-items: center; padding-block: 24px 48px; }
 .imagem { position: relative; min-width: 0; aspect-ratio: 1 / 1; max-width: 100%; display: grid; place-items: center; }
-.imagem::before { content: ""; position: absolute; inset: 12%; border-radius: 50%; background: radial-gradient(circle, rgba(47,107,255,0.55), transparent 65%); filter: blur(20px); }
-.foto { position: relative; width: 86%; aspect-ratio: 1 / 1; border-radius: 28px; overflow: hidden; border: 1px solid rgba(91,140,255,0.45); box-shadow: 0 0 0 8px rgba(47,107,255,0.08), 0 30px 80px rgba(0,0,0,0.6), 0 0 80px rgba(47,107,255,0.35); }
+.imagem::before { content: ""; position: absolute; inset: 12%; border-radius: 50%; background: radial-gradient(circle, rgba(119,226,225,0.55), transparent 65%); filter: blur(20px); }
+.foto { position: relative; width: 86%; aspect-ratio: 1 / 1; border-radius: 28px; overflow: hidden; border: 1px solid rgba(119,226,225,0.45); box-shadow: 0 0 0 8px rgba(119,226,225,0.08), 0 30px 80px rgba(0,0,0,0.6), 0 0 80px rgba(119,226,225,0.35); }
 .foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
 /* Brilho nas lentes dos óculos (posição em % da foto 512x512) */
 .lente { position: absolute; overflow: hidden; border-radius: 30% / 38%; pointer-events: none; }
-.lente-esq { left: 20.5%; top: 50.5%; width: 24.5%; height: 20.5%; }
-.lente-dir { left: 55.5%; top: 50%; width: 25%; height: 20.5%; }
+.lente-esq { left: 29.8%; top: 29%; width: 19%; height: 13.2%; border-radius: 12% 18% 30% 34%; }
+.lente-dir { left: 53.2%; top: 28.8%; width: 19%; height: 13.4%; border-radius: 18% 12% 34% 30%; }
 .lente::after { content: ""; position: absolute; top: -60%; left: -70%; width: 50%; height: 220%; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 30%, rgba(255,255,255,0.95) 42%, rgba(255,255,255,0.15) 55%, rgba(255,255,255,0.8) 66%, rgba(255,255,255,0) 80%); transform: rotate(22deg); filter: blur(1px); animation: brilho 4.5s ease-in-out infinite; }
 .lente-dir::after { animation-delay: 0.32s; }
 @keyframes brilho { 0% { left: -70%; } 22% { left: 140%; } 100% { left: 140%; } }
@@ -134,14 +134,14 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
 .grade li:nth-child(4) { grid-column: 2 / span 2; }
 .servico {
   font: inherit; color: var(--fg); text-align: left; cursor: pointer; width: 100%;
-  background: linear-gradient(160deg, rgba(47,107,255,0.16), rgba(20,28,52,0.72) 55%);
+  background: linear-gradient(160deg, rgba(119,226,225,0.16), rgba(2,24,26,0.62) 55%);
   border: 1px solid var(--line); border-radius: 18px; padding: 22px 22px 18px;
   display: grid; grid-template-rows: auto 1fr auto; gap: 14px; position: relative; overflow: hidden;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
-.servico::before { content: ""; position: absolute; inset: auto -30% -60% auto; width: 70%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(47,107,255,0.35), transparent 70%); pointer-events: none; }
-.servico:hover { transform: translateY(-3px); border-color: rgba(91,140,255,0.6); box-shadow: 0 18px 40px rgba(0,0,0,0.45), 0 0 40px rgba(47,107,255,0.25); }
-.num { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-size: 22px; background: var(--blue); color: #fff; box-shadow: 0 0 0 6px rgba(47,107,255,0.15); }
+.servico::before { content: ""; position: absolute; inset: auto -30% -60% auto; width: 70%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(119,226,225,0.35), transparent 70%); pointer-events: none; }
+.servico:hover { transform: translateY(-3px); border-color: rgba(119,226,225,0.6); box-shadow: 0 18px 40px rgba(0,0,0,0.45), 0 0 40px rgba(119,226,225,0.25); }
+.num { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-size: 22px; background: var(--blue); color: #fff; box-shadow: 0 0 0 6px rgba(119,226,225,0.15); }
 .servico-texto { font-size: 18px; line-height: 1.3; color: #c9d3f2; }
 .servico-texto strong { display: block; font-family: var(--display); font-weight: 400; font-size: 30px; line-height: 1; text-transform: uppercase; color: var(--fg); margin-bottom: 6px; letter-spacing: 0.01em; }
 .saiba { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue-soft); }
@@ -153,14 +153,14 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
 .cortina.aberta { opacity: 1; }
 .zoom {
   position: fixed; z-index: 41; overflow: hidden; border-radius: 18px;
-  background: linear-gradient(160deg, #0d1a40, #070d1e 60%); border: 1px solid rgba(91,140,255,0.45);
-  box-shadow: 0 30px 90px rgba(0,0,0,0.7), 0 0 80px rgba(47,107,255,0.3);
+  background: linear-gradient(160deg, #0b4f51, #031a1b 60%); border: 1px solid rgba(119,226,225,0.45);
+  box-shadow: 0 30px 90px rgba(0,0,0,0.7), 0 0 80px rgba(119,226,225,0.3);
   transition: top 0.5s cubic-bezier(.2,.8,.2,1), left 0.5s cubic-bezier(.2,.8,.2,1), width 0.5s cubic-bezier(.2,.8,.2,1), height 0.5s cubic-bezier(.2,.8,.2,1), border-radius 0.5s ease;
   display: grid; grid-template-rows: auto 1fr;
 }
 .zoom > * { opacity: 0; transition: opacity 0.3s ease 0.25s; }
 .zoom.cheio > * { opacity: 1; }
-.chat-topo { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-bottom: 1px solid var(--line); background: rgba(47,107,255,0.08); }
+.chat-topo { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-bottom: 1px solid var(--line); background: rgba(119,226,225,0.08); }
 .chat-topo .num { width: 38px; height: 38px; font-size: 19px; flex: none; }
 .chat-titulo { min-width: 0; flex: 1; }
 .chat-titulo b { display: block; font-family: var(--display); font-weight: 400; font-size: 24px; line-height: 1.05; text-transform: uppercase; }
@@ -174,15 +174,15 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
 .msg.ia p { background: var(--panel); border: 1px solid var(--line); border-bottom-left-radius: 6px; }
 .msg.voce { align-self: flex-end; }
 .msg.voce p { background: var(--blue); border-bottom-right-radius: 6px; }
-.avatar { flex: none; width: 34px; height: 34px; border-radius: 50%; overflow: hidden; border: 1px solid rgba(91,140,255,0.5); background: #0b1122; }
+.avatar { flex: none; width: 34px; height: 34px; border-radius: 50%; overflow: hidden; border: 1px solid rgba(119,226,225,0.5); background: #04211f; }
 .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; transform: scale(1.5); }
 .digitando p { display: flex; gap: 5px; padding: 16px; }
 .digitando i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); animation: pulo 1s ease-in-out infinite; }
 .digitando i:nth-child(2) { animation-delay: 0.15s; } .digitando i:nth-child(3) { animation-delay: 0.3s; }
 @keyframes pulo { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-5px); opacity: 1; } }
 .sugestoes { display: flex; flex-wrap: wrap; gap: 8px; padding-left: 44px; }
-.sugestoes button { font: inherit; font-size: 13px; border: 1px solid rgba(91,140,255,0.5); background: transparent; color: var(--blue-soft); border-radius: 999px; padding: 7px 14px; cursor: pointer; }
-.sugestoes button:hover { background: rgba(47,107,255,0.15); }
+.sugestoes button { font: inherit; font-size: 13px; border: 1px solid rgba(119,226,225,0.5); background: transparent; color: var(--blue-soft); border-radius: 999px; padding: 7px 14px; cursor: pointer; }
+.sugestoes button:hover { background: rgba(119,226,225,0.15); }
 .chat-rodape { border-top: 1px solid var(--line); padding: 12px 14px; display: grid; gap: 10px; }
 .chat-form { display: flex; gap: 8px; }
 .chat-form input { font: inherit; font-size: 15px; flex: 1; min-width: 0; color: var(--fg); background: var(--field); border: 1px solid var(--line); border-radius: 999px; padding: 12px 18px; }
@@ -193,10 +193,10 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
 
 /* Miniatura do vídeo no cartão */
 .cab { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-.miniatura { position: relative; width: 52%; max-width: 200px; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: linear-gradient(135deg, #12204d, #070d1e); border: 1px solid rgba(91,140,255,0.45); flex: none; }
+.miniatura { position: relative; width: 52%; max-width: 200px; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; background: linear-gradient(135deg, #0b4f51, #031a1b); border: 1px solid rgba(119,226,225,0.45); flex: none; }
 .miniatura img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.miniatura::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,7,15,0) 35%, rgba(4,7,15,0.85)); }
-.play { position: absolute; z-index: 1; left: 50%; top: 42%; transform: translate(-50%, -50%); width: 34px; height: 34px; border-radius: 50%; background: rgba(47,107,255,0.92); display: grid; place-items: center; box-shadow: 0 0 16px rgba(47,107,255,0.7); transition: transform 0.2s ease; }
+.miniatura::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3,26,27,0) 35%, rgba(3,26,27,0.85)); }
+.play { position: absolute; z-index: 1; left: 50%; top: 42%; transform: translate(-50%, -50%); width: 34px; height: 34px; border-radius: 50%; background: rgba(119,226,225,0.92); display: grid; place-items: center; box-shadow: 0 0 16px rgba(119,226,225,0.7); transition: transform 0.2s ease; }
 .servico:hover .play { transform: translate(-50%, -50%) scale(1.12); }
 .mini-titulo { position: absolute; z-index: 1; left: 8px; right: 8px; bottom: 5px; font-size: 11px; font-weight: 600; line-height: 1.2; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
@@ -222,6 +222,147 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
   .video-col .video-titulo { display: none; }
   .video-col .video-nota { display: none; }
 }
+
+/* Paleta da marca Rick Ribeiro: fundo preto com iluminação ciano #77E2E1 */
+:root {
+  --bg: #050808; --bg-2: #000000;
+  --panel: rgba(2, 24, 26, 0.62); --field: #04211f;
+  --line: rgba(215, 248, 255, 0.2);
+  --fg: #ffffff; --muted: #c4e6e6;
+  --blue: #77E2E1; --blue-soft: #77E2E1; --ink: #031a1b;
+}
+body {
+  background:
+    radial-gradient(60% 50% at 25% 55%, rgba(119, 226, 225, 0.42), transparent 70%),
+    radial-gradient(50% 40% at 90% 10%, rgba(119, 226, 225, 0.16), transparent 70%),
+    radial-gradient(120% 80% at 40% 35%, #101a1a, #060a0a 55%, #000000 100%);
+  background-color: #000000;
+}
+.faixa { background: var(--ink); }
+.faixa-trilho { color: #fff; }
+.faixa-trilho .escuro { color: var(--blue); }
+.faixa-trilho span::after { background: var(--blue); }
+.marca h1 em, .chamada em, .servicos-topo h2 em { color: var(--ink); }
+.num, .msg.voce p, .chat-form button, .sim button[aria-pressed="true"] { color: var(--ink); }
+.play svg path { fill: var(--ink); }
+.servico-texto { color: #d7f8ff; }
+.zoom { background: linear-gradient(160deg, #0b4f51, #031a1b 65%); }
+.avatar, .fechar { background: var(--field); }
+.selo { color: #d7f8ff; }
+.dados div { color: #d7f8ff; }
+
+.logo-texto { font-family: var(--display); font-size: clamp(30px, 4vw, 44px); line-height: 1; text-transform: uppercase; letter-spacing: 0.02em; color: #fff; }
+.logo-texto b { font-weight: 400; color: #d7f8ff; }
+/* Topo com logo, título e subtítulo */
+.topo { flex-direction: column; gap: 18px; }
+.logo { display: block; width: clamp(150px, 22vw, 230px); height: auto; filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35)); }
+.marca { gap: 14px; }
+.marca h1 { max-width: 16ch; line-height: 1; font-size: clamp(40px, 7vw, 76px); text-wrap: balance; }
+.subtitulo { margin: 0; padding-top: 14px; border-top: 1px solid var(--line); font-family: var(--display); font-size: clamp(20px, 2.6vw, 30px); line-height: 1.1; text-transform: uppercase; color: #d7f8ff; text-align: center; max-width: 34ch; text-wrap: balance; letter-spacing: 0.01em; }
+
+/* ===== Visual "laboratório" do carrossel (manual da marca) ===== */
+:root {
+  --display: "League Gothic", "Anton", "Arial Narrow", sans-serif;
+  --body: "Plus Jakarta Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "Orbitron", ui-monospace, Consolas, monospace;
+  --amarelo: #FFD21F;
+}
+/* Textura: grade de pontos + granulado fino por cima de tudo (bem leve) */
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 30;
+  background-image: radial-gradient(rgba(215,248,255,0.10) 1px, transparent 1.4px); background-size: 7px 7px; mix-blend-mode: overlay; }
+body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 31; opacity: 0.10; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"); }
+
+/* Rótulos técnicos (HUD) */
+.hud { width: 100%; max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: rgba(215,248,255,0.75); }
+.hud i { font-style: normal; color: var(--amarelo); margin: 0 0.4em; }
+.hud .pag { white-space: nowrap; }
+.hud .pag::after { content: " \00BB"; }
+
+/* Topo: logo com respiro técnico */
+.topo { position: relative; padding-block: 28px 12px; gap: 0; }
+.topo .hud { margin-bottom: 44px; }
+.marca { gap: 0; }
+.logo { width: clamp(170px, 20vw, 240px); margin-bottom: 40px; filter: drop-shadow(0 8px 14px rgba(0,0,0,0.28)); }
+.marca h1 { font-size: clamp(54px, 9vw, 104px); line-height: 0.92; letter-spacing: 0.005em; max-width: 20ch; text-shadow: 0 6px 24px rgba(0,0,0,0.25); }
+.marca h1 em, .servicos-topo h2 em { color: var(--amarelo); }
+.subtitulo { margin-top: 26px; padding-top: 18px; font-family: var(--body) !important; font-weight: 500; text-transform: none !important; font-size: clamp(18px, 2.2vw, 26px); line-height: 1.3; color: #d7f8ff; letter-spacing: -0.01em; }
+/* Moldura HUD: linhas finas com nós */
+.moldura { position: absolute; pointer-events: none; color: rgba(215,248,255,0.4); }
+.moldura svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.moldura-esq { left: max(16px, calc(50% - 590px)); top: 96px; width: 230px; height: 150px; }
+.moldura-dir { right: max(16px, calc(50% - 590px)); bottom: 6px; width: 230px; height: 150px; transform: scale(-1, -1); }
+
+/* Textos */
+.chamada { font-weight: 700; letter-spacing: -0.01em; }
+.chamada em { color: var(--amarelo); }
+.faixa-trilho { font-size: 24px; letter-spacing: 0.03em; }
+.cartao { border-left: 3px solid #d7f8ff; box-shadow: 0 24px 50px rgba(0,0,0,0.35); }
+
+/* Serviços no estilo das caixas 01/02/03 do carrossel */
+.servicos-topo { gap: 14px; }
+.servicos-topo .hud { margin-bottom: 18px; }
+.servicos-topo h2 { font-size: clamp(46px, 7vw, 76px); line-height: 0.95; }
+.servico { background: linear-gradient(160deg, rgba(3,26,27,0.55), rgba(3,26,27,0.78)); border: 1px solid rgba(215,248,255,0.14); border-left: 3px solid #d7f8ff; border-radius: 4px; box-shadow: 0 18px 40px rgba(0,0,0,0.35); }
+.servico::before { opacity: 0.5; }
+.num { width: auto; height: auto; border-radius: 0; background: none; box-shadow: none; font-family: var(--mono); font-weight: 700; font-size: 26px; color: var(--amarelo); letter-spacing: 0.04em; }
+.servico-texto strong { font-size: 36px; letter-spacing: 0.01em; }
+.servico-texto { font-size: 16px; }
+.saiba { font-family: var(--mono); font-size: 10px; letter-spacing: 0.28em; color: var(--amarelo); }
+.miniatura { border-radius: 4px; }
+.play { background: var(--amarelo); box-shadow: 0 0 16px rgba(255,210,31,0.6); }
+
+/* Chat */
+.zoom { border-radius: 6px; border-left: 3px solid #d7f8ff; }
+.chat-topo .num { width: auto; height: auto; font-size: 22px; }
+.chat-titulo b { font-size: 30px; letter-spacing: 0.01em; }
+.selo-previa { font-family: var(--mono); font-size: 9px; letter-spacing: 0.2em; color: var(--amarelo); }
+
+@media (max-width: 860px) {
+  .moldura { display: none; }
+  .hud { font-size: 8px; letter-spacing: 0.22em; }
+  .topo .hud { margin-bottom: 30px; }
+  .logo { margin-bottom: 28px; }
+}
+
+/* Etiqueta do logo (como a etiqueta branca do carrossel) */
+.etiqueta { display: inline-block; background: #F5F5F5; padding: 12px 18px 10px; transform: rotate(-3deg); box-shadow: 7px 7px 0 rgba(0,0,0,0.38), 0 18px 30px rgba(0,0,0,0.25); margin-bottom: 44px; }
+.etiqueta .logo { width: clamp(140px, 16vw, 190px); margin: 0; filter: none; }
+
+/* Logo vazado: etiqueta branca com o logo recortado, mostrando o fundo do site */
+.etiqueta-sombra { display: inline-block; margin-bottom: 44px; filter: drop-shadow(6px 7px 0 rgba(0,0,0,0.45)); }
+.etiqueta-sombra { position: relative; transform: rotate(-3deg); }
+.etiqueta.vazada { transform: none; }
+/* Fita adesiva rústica segurando a etiqueta */
+.fita { position: absolute; top: -10px; width: 86px; height: 26px; z-index: 2; pointer-events: none;
+  background:
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.10) 0 2px, transparent 2px 5px),
+    repeating-linear-gradient(0deg, rgba(120,95,50,0.10) 0 1px, transparent 1px 3px),
+    linear-gradient(180deg, rgba(236,222,186,0.80), rgba(214,196,150,0.74));
+  box-shadow: 0 1px 2px rgba(0,0,0,0.18);
+  clip-path: polygon(3% 8%, 7% 0, 12% 6%, 17% 1%, 22% 7%, 28% 2%, 72% 3%, 78% 0, 83% 7%, 88% 1%, 93% 6%, 97% 0, 100% 9%,
+    97% 22%, 100% 38%, 96% 54%, 100% 70%, 97% 86%, 100% 100%, 94% 93%, 89% 100%, 84% 94%, 78% 99%, 22% 97%, 17% 100%, 12% 93%, 6% 99%, 0 92%,
+    3% 76%, 0 60%, 4% 44%, 0 28%); }
+.fita.e { left: -22px; transform: rotate(-38deg); }
+.fita.d { right: -22px; transform: rotate(36deg); }
+.etiqueta.vazada { margin-bottom: 0; box-shadow: none;
+  -webkit-mask: var(--logo) center / contain no-repeat content-box, linear-gradient(#000 0 0) border-box;
+  -webkit-mask-composite: xor;
+  mask: var(--logo) center / contain no-repeat content-box exclude, linear-gradient(#000 0 0) border-box; }
+.etiqueta.vazada .logo { visibility: hidden; display: block; }
+
+/* Título: linha de apoio + título principal em Anton, branco, reto */
+.titulo-lab { margin: 0; text-align: center; max-width: none !important; text-shadow: none !important; line-height: 1 !important; }
+.titulo-lab .apoio { display: block; font-family: var(--body); font-weight: 500; text-transform: none; font-size: clamp(24px, 3.6vw, 44px); letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 8px; color: #ffffff; }
+.heroi { display: block; font-family: "Anton", var(--display); font-weight: 400; text-transform: uppercase; color: #ffffff; font-size: clamp(28px, 4.5vw, 56px); line-height: 1.15; letter-spacing: 0.01em; }
+.heroi .pal { display: block; white-space: nowrap; }
+
+.chamada em { color: var(--green) !important; }
+/* Mais espaço entre as seções */
+.hero { padding-block: 72px 104px; }
+.servicos { padding-top: 40px; }
+@media (max-width: 860px) { .hero { padding-block: 48px 72px; } }
 </style>
 </head>
 <body>
@@ -229,42 +370,37 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
 
 <div class="faixa" aria-hidden="true">
   <div class="faixa-trilho">
-    <span>Achou PMW</span><span class="escuro">Fale direto</span><span>Achou PMW</span><span class="escuro">Fale direto</span><span>Achou PMW</span><span class="escuro">Fale direto</span><span>Achou PMW</span><span class="escuro">Fale direto</span>
-    <span>Achou PMW</span><span class="escuro">Fale direto</span><span>Achou PMW</span><span class="escuro">Fale direto</span><span>Achou PMW</span><span class="escuro">Fale direto</span><span>Achou PMW</span><span class="escuro">Fale direto</span>
+    <span>Como estão suas vendas?</span><span class="escuro">Conheça minhas soluções</span><span>Como estão suas vendas?</span><span class="escuro">Conheça minhas soluções</span><span>Como estão suas vendas?</span><span class="escuro">Conheça minhas soluções</span><span>Como estão suas vendas?</span><span class="escuro">Conheça minhas soluções</span>
+    <span>Como estão suas vendas?</span><span class="escuro">Conheça minhas soluções</span><span>Como estão suas vendas?</span><span class="escuro">Conheça minhas soluções</span><span>Como estão suas vendas?</span><span class="escuro">Conheça minhas soluções</span><span>Como estão suas vendas?</span><span class="escuro">Conheça minhas soluções</span>
   </div>
 </div>
 
 <header class="topo gutter">
+  <div class="hud"><span>Laboratório de vendas<i>//</i>Rick Ribeiro Ads</span><span class="pag">01 / 02</span></div>
+  <span class="moldura moldura-esq" aria-hidden="true"><svg viewBox="0 0 230 150" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 146 V40 L30 14 H226"/><circle cx="4" cy="146" r="3" fill="currentColor"/><circle cx="226" cy="14" r="3" fill="currentColor"/><path d="M30 14 L40 4 H90" stroke-dasharray="2 4"/></svg></span>
+  <span class="moldura moldura-dir" aria-hidden="true"><svg viewBox="0 0 230 150" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 146 V40 L30 14 H226"/><circle cx="4" cy="146" r="3" fill="currentColor"/><circle cx="226" cy="14" r="3" fill="currentColor"/></svg></span>
   <div class="marca">
-    <span class="selo">Achou PMW</span>
-    <h1>Achou a oferta? <em>Fale direto</em></h1>
+    <span class="etiqueta-sombra"><span class="etiqueta vazada" style="--logo:url('logo-rick.png')"><img class="logo" src="logo-rick.png" alt="Rick Ribeiro" width="500" height="221"></span><span class="fita e" aria-hidden="true"></span><span class="fita d" aria-hidden="true"></span></span>
+    <h1 class="titulo-lab"><span class="heroi"><span class="pal">Gestão de tráfego e</span> <span class="pal">marketing estratégico</span></span></h1>
   </div>
-  <div class="dados">
-    <div>Direto com<br>quem anunciou</div>
-    <div>100%<br>gratuito</div>
-    <div>Atendimento<br>no WhatsApp</div>
-  </div>
+  <p class="subtitulo">As novas tecnologias de dados trabalhando para as suas vendas</p>
 </header>
 
 <main class="hero gutter">
   <div class="imagem">
     <div class="foto">
-      <img src="coelho.png" alt="Mascote coelho do Achou PMW" width="512" height="512">
+      <img src="rick.webp" alt="Rick Ribeiro" width="512" height="512">
       <span class="lente lente-esq" aria-hidden="true"></span>
       <span class="lente lente-dir" aria-hidden="true"></span>
     </div>
   </div>
 
   <div class="lado">
-    <p class="chamada">Viu um anúncio e quer saber mais? Deixe seu contato e <em>converse direto com o anunciante</em> pelo WhatsApp, em menos de um minuto.</p>
+    <p class="chamada">Olhou o site e ainda tem dúvidas?! <em>Converse comigo direto pelo WhatsApp.</em></p>
 
     <form class="cartao" id="form" novalidate>
-      <div class="campo"><label for="nome">Seu nome</label>
-        <input type="text" id="nome" name="nome" autocomplete="name" maxlength="80" placeholder="Seu nome" required></div>
-      <div class="campo"><label for="email">Seu e-mail (opcional)</label>
-        <input type="email" id="email" name="email" autocomplete="email" maxlength="120" placeholder="Seu melhor e-mail (opcional)"></div>
-      <div class="campo"><label for="telefone">Seu WhatsApp com DDD</label>
-        <input type="tel" id="telefone" name="telefone" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="Seu WhatsApp (DDD + telefone)" required></div>
+      <div class="campo"><label for="email">Seu e-mail</label>
+        <input type="email" id="email" name="email" autocomplete="email" maxlength="120" placeholder="Seu melhor e-mail" required></div>
       <label class="lgpd" for="aceite">
         <input type="checkbox" id="aceite" required>
         <span>Pela LGPD, precisamos da sua autorização. Ao marcar, você concorda em se comunicar com nossa empresa por e-mail ou WhatsApp.</span>
@@ -279,16 +415,16 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
 
 <section class="servicos gutter" id="servicos" aria-labelledby="servicos-titulo">
   <div class="servicos-topo">
-    <span class="selo">Serviços</span>
+    <div class="hud"><span>Serviços<i>//</i>Testados na prática</span><span class="pag">02 / 02</span></div>
     <h2 id="servicos-titulo">Como posso <em>te ajudar</em></h2>
-    <p>Toque em um serviço para conversar com o nosso assistente e tirar suas dúvidas na hora.</p>
+    <p>Toque em uma das opções para conhecer nossas soluções.</p>
   </div>
   <ul class="grade">
-    <li><button class="servico" type="button" data-servico="0"><span class="cab"><span class="num">1</span></span><span class="servico-texto"><strong>Tutoriais</strong>simples, rápidos e acessíveis</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
-    <li><button class="servico" type="button" data-servico="1"><span class="cab"><span class="num">2</span></span><span class="servico-texto"><strong>Tela aberta</strong>eu e você, juntos, por 3 horas</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
-    <li><button class="servico" type="button" data-servico="2"><span class="cab"><span class="num">3</span></span><span class="servico-texto"><strong>Sistema de marketing</strong>pensado para o seu negócio</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
-    <li><button class="servico" type="button" data-servico="3"><span class="cab"><span class="num">4</span></span><span class="servico-texto"><strong>Comunidade</strong>para MEIs</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
-    <li><button class="servico" type="button" data-servico="4"><span class="cab"><span class="num">5</span></span><span class="servico-texto"><strong>Treine</strong>seu técnico de marketing comigo</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
+    <li><button class="servico" type="button" data-servico="0"><span class="cab"><span class="num">01</span></span><span class="servico-texto"><strong>Tutoriais</strong>simples, rápidos e acessíveis</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
+    <li><button class="servico" type="button" data-servico="1"><span class="cab"><span class="num">02</span></span><span class="servico-texto"><strong>Consultoria na tela aberta</strong>pergunte tudo o que quiser por 3 horas</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
+    <li><button class="servico" type="button" data-servico="2"><span class="cab"><span class="num">03</span></span><span class="servico-texto"><strong>Sistema de vendas</strong>pensado para o seu negócio</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
+    <li><button class="servico" type="button" data-servico="3"><span class="cab"><span class="num">04</span></span><span class="servico-texto"><strong>Comunidade</strong>para empreendedores individuais</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
+    <li><button class="servico" type="button" data-servico="4"><span class="cab"><span class="num">05</span></span><span class="servico-texto"><strong>Treine comigo</strong>seu time de marketing e vendas</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
   </ul>
 </section>
 
@@ -394,8 +530,8 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
     var f = fbc;
     if (simulado && simulado.fbclid) f = "fb.1." + agora + "." + simulado.fbclid;
     var d = {
-      nome: document.getElementById("nome").value.trim(),
-      telefone: document.getElementById("telefone").value.replace(/\D/g, ""),
+      nome: "",
+      telefone: "",
       email: document.getElementById("email").value.trim().toLowerCase(),
       codigo_visita: codigo,
       origem: descobrirOrigem(o, ref),
@@ -419,7 +555,7 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
 
   function mostrar() { pre.textContent = JSON.stringify(montar(), null, 2); }
   mostrar();
-  ["nome", "telefone", "email"].forEach(function (id) { document.getElementById(id).addEventListener("input", mostrar); });
+  ["email"].forEach(function (id) { document.getElementById(id).addEventListener("input", mostrar); });
 
   document.querySelectorAll("[data-sim]").forEach(function (b) {
     b.addEventListener("click", function () {
@@ -438,11 +574,8 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
     ev.preventDefault();
     erro.hidden = true;
     var d = montar();
-    if (d.nome.length < 2) return falha("Escreva seu nome.");
-    if (d.telefone.length < 10 || d.telefone.length > 13) return falha("Confira o telefone com DDD. Exemplo: (63) 9 9999-9999.");
-    if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return falha("Confira o e-mail ou deixe em branco.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return falha("Escreva um e-mail válido para continuar.");
     if (!document.getElementById("aceite").checked) return falha("Marque a caixa de concordância para continuar.");
-    if (d.telefone.length <= 11) d.telefone = "55" + d.telefone;
 
     var texto = "Olá! Vim pela página e quero saber mais sobre a oferta. (cód. " + codigo + ")";
     var link = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto);
@@ -476,19 +609,19 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
       ola: "Oi! Os tutoriais são vídeos curtos e diretos, feitos para quem está começando. Você assiste no seu tempo, do celular ou do computador, e aplica na hora no seu negócio.",
       video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
       perguntas: ["Quanto tempo tem cada vídeo?", "Preciso saber alguma coisa antes?", "Como eu recebo o acesso?"] },
-    { titulo: "Tela aberta", sub: "eu e você, juntos, por 3 horas",
+    { titulo: "Consultoria na tela aberta", sub: "pergunte tudo o que quiser por 3 horas",
       ola: "Oi! Aqui a gente faz uma chamada de 3 horas com a tela compartilhada. Você mostra o seu negócio e a gente monta e ajusta tudo junto, com você vendo cada passo.",
       video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
       perguntas: ["O que dá para fazer em 3 horas?", "Como marcamos o horário?", "Fica gravado?"] },
-    { titulo: "Sistema de marketing", sub: "pensado para o seu negócio",
+    { titulo: "Sistema de vendas", sub: "pensado para o seu negócio",
       ola: "Oi! O sistema de marketing é montado sob medida: anúncios levando para o WhatsApp, cada cliente anotado e as vendas avisadas para o Facebook e o Google, para os anúncios ficarem cada vez melhores.",
       video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
       perguntas: ["Funciona para o meu tipo de negócio?", "Preciso entender de tecnologia?", "Quanto tempo leva para ficar pronto?"] },
-    { titulo: "Comunidade", sub: "para MEIs",
-      ola: "Oi! A comunidade é um grupo de MEIs que trocam experiências sobre anúncios e vendas. Tem conteúdo novo, encontros ao vivo e espaço para tirar dúvidas.",
+    { titulo: "Comunidade", sub: "para empreendedores individuais",
+      ola: "Oi! A comunidade é um grupo de empreendedores individuais que trocam experiências sobre anúncios e vendas. Tem conteúdo novo, encontros ao vivo e espaço para tirar dúvidas.",
       video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
       perguntas: ["Como funciona a entrada?", "Tem encontros ao vivo?", "Preciso ter CNPJ de MEI?"] },
-    { titulo: "Treine seu técnico", sub: "de marketing comigo",
+    { titulo: "Treine comigo", sub: "seu time de marketing e vendas",
       ola: "Oi! Se você já tem alguém que cuida do seu marketing, eu treino essa pessoa para montar e manter o sistema funcionando, sem depender de mim.",
       video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
       perguntas: ["Como é o treinamento?", "Quanto tempo dura?", "Meu técnico precisa de experiência?"] }
@@ -521,7 +654,7 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
     var s = SERVICOS[+botao.dataset.servico], n = +botao.dataset.servico + 1;
     var cortina = el("div", "cortina"); var z = el("div", "zoom");
     z.setAttribute("role", "dialog"); z.setAttribute("aria-modal", "true"); z.setAttribute("aria-label", "Chat sobre " + s.titulo);
-    var topo = el("div", "chat-topo"); topo.appendChild(el("span", "num", String(n)));
+    var topo = el("div", "chat-topo"); topo.appendChild(el("span", "num", "0" + n));
     var t = el("div", "chat-titulo"); t.appendChild(el("b", "", s.titulo + " " + s.sub)); t.appendChild(el("span", "", "Assistente online"));
     topo.appendChild(t);
     var fechar = el("button", "fechar"); fechar.type = "button"; fechar.setAttribute("aria-label", "Fechar");
@@ -570,7 +703,7 @@ pre { font-family: var(--mono); font-size: 12px; background: var(--field); borde
 
     function perguntar(q) { msgVoce(corpo, q); msgIa(corpo, RESPOSTA); }
     form.addEventListener("submit", function (e) { e.preventDefault(); var q = inp.value.trim(); if (!q) return; inp.value = ""; var sg = corpo.querySelector(".sugestoes"); if (sg) sg.remove(); perguntar(q); });
-    wa.addEventListener("click", function (e) { e.preventDefault(); fecharTudo(); var f = document.getElementById("nome"); if (f) { f.scrollIntoView({ behavior: reduzir ? "auto" : "smooth", block: "center" }); setTimeout(function () { f.focus({ preventScroll: true }); }, 400); } });
+    wa.addEventListener("click", function (e) { e.preventDefault(); fecharTudo(); var f = document.getElementById("email"); if (f) { f.scrollIntoView({ behavior: reduzir ? "auto" : "smooth", block: "center" }); setTimeout(function () { f.focus({ preventScroll: true }); }, 400); } });
 
     function fecharTudo() {
       if (!aberto) return; aberto = null;
