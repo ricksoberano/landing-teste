@@ -66,8 +66,8 @@ body {
 .foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
 /* Brilho nas lentes dos óculos (posição em % da foto 512x512) */
 .lente { position: absolute; overflow: hidden; border-radius: 30% / 38%; pointer-events: none; }
-.lente-esq { left: 36%; top: 42.8%; width: 13.6%; height: 8.6%; border-radius: 10% 14% 34% 38%; }
-.lente-dir { left: 51.9%; top: 42.6%; width: 12.8%; height: 8.6%; border-radius: 14% 10% 38% 34%; }
+.lente-esq { left: 29.5%; top: 41.2%; width: 19.9%; height: 12.4%; border-radius: 10% 14% 34% 38%; }
+.lente-dir { left: 52.8%; top: 40.9%; width: 18.7%; height: 12.4%; border-radius: 14% 10% 38% 34%; }
 .lente::after { content: ""; position: absolute; top: -60%; left: -70%; width: 50%; height: 220%; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 30%, rgba(255,255,255,0.95) 42%, rgba(255,255,255,0.15) 55%, rgba(255,255,255,0.8) 66%, rgba(255,255,255,0) 80%); transform: rotate(22deg); filter: blur(1px); animation: brilho 4.5s ease-in-out infinite; }
 .lente-dir::after { animation-delay: 0.32s; }
 @keyframes brilho { 0% { left: -70%; } 22% { left: 140%; } 100% { left: 140%; } }
@@ -369,6 +369,30 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   .topo .hud { margin-bottom: 46px; }
   .chamada { text-align: center; }
 }
+
+/* Layout 6: foto no topo, etiqueta ao lado do formulário */
+.foto-topo { position: relative; width: min(440px, 84vw); aspect-ratio: 1 / 1; margin: 0 auto 44px; display: grid; place-items: center; }
+.foto-topo::before { content: ""; position: absolute; inset: 8%; border-radius: 50%; background: radial-gradient(circle, rgba(119,226,225,0.5), transparent 65%); filter: blur(24px); }
+.foto-topo .foto { width: 100%; }
+.foto img.logo-foto { position: absolute; right: 12%; bottom: 3.5%; width: 21%; height: auto; filter: drop-shadow(0 4px 14px rgba(0,0,0,0.65)); pointer-events: none; z-index: 2; }
+.imagem { aspect-ratio: auto; min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+.imagem::before { inset: -6% 8% 42% 8%; opacity: 0.6; }
+.imagem .chamada { text-align: center; max-width: 22ch; position: relative; text-shadow: 0 2px 14px rgba(0,0,0,0.7), 0 0 2px rgba(0,0,0,0.5); }
+/* Textura de papel na etiqueta */
+.etiqueta.vazada { background-color: #EFECE4; background-image:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.22 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.05' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.4 0 0 0 0 0.3 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E"),
+  radial-gradient(120% 90% at 30% 20%, rgba(255,255,255,0.55), transparent 60%),
+  linear-gradient(160deg, transparent 55%, rgba(120,100,70,0.12)); background-size: 220px 220px, cover, cover, cover; }
+.imagem .etiqueta-sombra { margin-bottom: 0; }
+.imagem .etiqueta .logo { width: clamp(150px, 15vw, 200px); }
+.imagem .fita { width: 80px; height: 24px; }
+@media (max-width: 860px) {
+  .foto-topo { margin-bottom: 32px; }
+  .imagem { min-height: 0; padding-block: 56px 0; gap: 28px; }
+  .hero { gap: 20px; }
+  .imagem .etiqueta .logo { width: 160px; }
+}
 </style>
 </head>
 <body>
@@ -386,7 +410,12 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   <span class="moldura moldura-esq" aria-hidden="true"><svg viewBox="0 0 230 150" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 146 V40 L30 14 H226"/><circle cx="4" cy="146" r="3" fill="currentColor"/><circle cx="226" cy="14" r="3" fill="currentColor"/><path d="M30 14 L40 4 H90" stroke-dasharray="2 4"/></svg></span>
   <span class="moldura moldura-dir" aria-hidden="true"><svg viewBox="0 0 230 150" fill="none" stroke="currentColor" stroke-width="1"><path d="M4 146 V40 L30 14 H226"/><circle cx="4" cy="146" r="3" fill="currentColor"/><circle cx="226" cy="14" r="3" fill="currentColor"/></svg></span>
   <div class="marca">
-    <span class="etiqueta-sombra"><span class="etiqueta vazada" style="--logo:url('logo-rick.png')"><img class="logo" src="logo-rick.png" alt="Rick Ribeiro" width="500" height="221"></span><span class="fita e" aria-hidden="true"></span><span class="fita d" aria-hidden="true"></span></span>
+    <div class="foto-topo"><div class="foto">
+      <img src="rick.webp" alt="Rick Ribeiro" width="512" height="512">
+      <span class="lente lente-esq" aria-hidden="true"></span>
+      <span class="lente lente-dir" aria-hidden="true"></span>
+      <img class="logo-foto" src="logo-cores.png" alt="" aria-hidden="true">
+    </div></div>
     <h1 class="titulo-lab"><span class="heroi"><span class="pal">Gestão de tráfego e</span> <span class="pal">marketing estratégico</span></span></h1>
   </div>
   <p class="subtitulo">As novas tecnologias de dados trabalhando para as suas vendas</p>
@@ -394,15 +423,12 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 
 <main class="hero gutter">
   <div class="imagem">
-    <div class="foto">
-      <img src="rick.webp" alt="Rick Ribeiro" width="512" height="512">
-      <span class="lente lente-esq" aria-hidden="true"></span>
-      <span class="lente lente-dir" aria-hidden="true"></span>
-    </div>
+    <span class="etiqueta-sombra"><span class="etiqueta vazada" style="--logo:url('logo-rick.png')"><img class="logo" src="logo-rick.png" alt="Rick Ribeiro" width="500" height="221"></span><span class="fita e" aria-hidden="true"></span><span class="fita d" aria-hidden="true"></span></span>
+    <p class="chamada">Vamos falar sobre as suas vendas?! <em>Converse comigo direto pelo WhatsApp.</em></p>
   </div>
 
   <div class="lado">
-    <p class="chamada">Olhou o site e ainda tem dúvidas?! <em>Converse comigo direto pelo WhatsApp.</em></p>
+    
 
     <form class="cartao" id="form" novalidate>
       <div class="campo"><label for="email">Seu e-mail</label>
