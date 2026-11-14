@@ -66,8 +66,8 @@ body {
 .foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
 /* Brilho nas lentes dos óculos (posição em % da foto 512x512) */
 .lente { position: absolute; overflow: hidden; border-radius: 30% / 38%; pointer-events: none; }
-.lente-esq { left: 29.8%; top: 29%; width: 19%; height: 13.2%; border-radius: 12% 18% 30% 34%; }
-.lente-dir { left: 53.2%; top: 28.8%; width: 19%; height: 13.4%; border-radius: 18% 12% 34% 30%; }
+.lente-esq { left: 36%; top: 42.8%; width: 13.6%; height: 8.6%; border-radius: 10% 14% 34% 38%; }
+.lente-dir { left: 51.9%; top: 42.6%; width: 12.8%; height: 8.6%; border-radius: 14% 10% 38% 34%; }
 .lente::after { content: ""; position: absolute; top: -60%; left: -70%; width: 50%; height: 220%; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 30%, rgba(255,255,255,0.95) 42%, rgba(255,255,255,0.15) 55%, rgba(255,255,255,0.8) 66%, rgba(255,255,255,0) 80%); transform: rotate(22deg); filter: blur(1px); animation: brilho 4.5s ease-in-out infinite; }
 .lente-dir::after { animation-delay: 0.32s; }
 @keyframes brilho { 0% { left: -70%; } 22% { left: 140%; } 100% { left: 140%; } }
@@ -362,7 +362,13 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 /* Mais espaço entre as seções */
 .hero { padding-block: 72px 104px; }
 .servicos { padding-top: 40px; }
-@media (max-width: 860px) { .hero { padding-block: 48px 72px; } }
+@media (max-width: 860px) {
+  .hero { padding-block: 8px 72px; }
+  .hud { justify-content: center; text-align: center; }
+  .hud .pag { display: none; }
+  .topo .hud { margin-bottom: 46px; }
+  .chamada { text-align: center; }
+}
 </style>
 </head>
 <body>
@@ -417,11 +423,11 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   <div class="servicos-topo">
     <div class="hud"><span>Serviços<i>//</i>Testados na prática</span><span class="pag">02 / 02</span></div>
     <h2 id="servicos-titulo">Como posso <em>te ajudar</em></h2>
-    <p>Toque em uma das opções para conhecer nossas soluções.</p>
+    <p>Toque em uma das opções para conhecer minhas soluções.</p>
   </div>
   <ul class="grade">
-    <li><button class="servico" type="button" data-servico="0"><span class="cab"><span class="num">01</span></span><span class="servico-texto"><strong>Tutoriais</strong>simples, rápidos e acessíveis</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
-    <li><button class="servico" type="button" data-servico="1"><span class="cab"><span class="num">02</span></span><span class="servico-texto"><strong>Consultoria na tela aberta</strong>pergunte tudo o que quiser por 3 horas</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
+    <li><button class="servico" type="button" data-servico="0"><span class="cab"><span class="num">01</span></span><span class="servico-texto"><strong>Aulas e tutoriais</strong>passo a passo, rápidos e acessíveis</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
+    <li><button class="servico" type="button" data-servico="1"><span class="cab"><span class="num">02</span></span><span class="servico-texto"><strong>Consultoria de tela aberta</strong>pergunte tudo o que quiser por 3 horas</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
     <li><button class="servico" type="button" data-servico="2"><span class="cab"><span class="num">03</span></span><span class="servico-texto"><strong>Sistema de vendas</strong>pensado para o seu negócio</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
     <li><button class="servico" type="button" data-servico="3"><span class="cab"><span class="num">04</span></span><span class="servico-texto"><strong>Comunidade</strong>para empreendedores individuais</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
     <li><button class="servico" type="button" data-servico="4"><span class="cab"><span class="num">05</span></span><span class="servico-texto"><strong>Treine comigo</strong>seu time de marketing e vendas</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
@@ -605,11 +611,11 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 (function () {
   // Prévia visual do chat. A IA ainda não está ligada: as respostas abaixo são textos de exemplo.
   var SERVICOS = [
-    { titulo: "Tutoriais", sub: "simples, rápidos e acessíveis",
+    { titulo: "Aulas e tutoriais", sub: "passo a passo, rápidos e acessíveis",
       ola: "Oi! Os tutoriais são vídeos curtos e diretos, feitos para quem está começando. Você assiste no seu tempo, do celular ou do computador, e aplica na hora no seu negócio.",
       video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
       perguntas: ["Quanto tempo tem cada vídeo?", "Preciso saber alguma coisa antes?", "Como eu recebo o acesso?"] },
-    { titulo: "Consultoria na tela aberta", sub: "pergunte tudo o que quiser por 3 horas",
+    { titulo: "Consultoria de tela aberta", sub: "pergunte tudo o que quiser por 3 horas",
       ola: "Oi! Aqui a gente faz uma chamada de 3 horas com a tela compartilhada. Você mostra o seu negócio e a gente monta e ajusta tudo junto, com você vendo cada passo.",
       video: "eeKoUoYFoTw", videoTitulo: "Título do vídeo",
       perguntas: ["O que dá para fazer em 3 horas?", "Como marcamos o horário?", "Fica gravado?"] },
