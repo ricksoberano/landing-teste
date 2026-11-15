@@ -438,6 +438,8 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 .detalhes a { color: #77E2E1; }
 @media (max-width: 600px) { .ie { height: 100%; width: 100vw; border-radius: 0; border: 0; } .ie-corpo { padding: 4px 20px 24px; } }
 @media (prefers-reduced-motion: reduce) { .ie, .ie-cortina { transition: none; } }
+
+.ie-intro strong { color: #FFD21F; font-weight: 700; }
 /* Seção Sobre mim */
 .sobre { max-width: 1180px; margin: 0 auto; padding-block: 96px 120px; }
 .sobre .hud { margin-bottom: 40px; }
@@ -474,6 +476,9 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 /* Texto justificado (reto dos dois lados) */
 .sobre-texto p { text-align: justify; hyphens: auto; -webkit-hyphens: auto; text-wrap: pretty; }
 @media (max-width: 600px) { .sobre-texto p { font-size: 16px; line-height: 1.6; } }
+
+/* Foto do Sobre mim acima da textura do site (foto limpa) */
+.sobre-foto img { z-index: 32; }
 </style>
 </head>
 <body>
@@ -536,7 +541,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
     <li><button class="servico" type="button" data-servico="0"><span class="cab"><span class="num">01</span></span><span class="servico-texto"><strong>Aulas e tutoriais</strong>passo a passo, rápido e acessível</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
     <li><button class="servico" type="button" data-servico="1"><span class="cab"><span class="num">02</span></span><span class="servico-texto"><strong>Consultoria de tela aberta</strong>pergunte tudo o que quiser por 3 horas</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
     <li><button class="servico" type="button" data-servico="2"><span class="cab"><span class="num">03</span></span><span class="servico-texto"><strong>Sistema de vendas</strong>pensado para o seu negócio</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
-    <li><button class="servico" type="button" data-servico="3"><span class="cab"><span class="num">04</span></span><span class="servico-texto"><strong>Comunidade</strong>para empreendedores individuais</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
+    <li><button class="servico" type="button" data-servico="3"><span class="cab"><span class="num">04</span></span><span class="servico-texto"><strong>Comunidade Lab de Vendas</strong>para empreendedores individuais</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
     <li><button class="servico" type="button" data-servico="4"><span class="cab"><span class="num">05</span></span><span class="servico-texto"><strong>Treine comigo</strong>seu time de marketing e vendas</span><span class="saiba">Saiba mais <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 5l7 7-7 7-1.4-1.4 4.6-4.6H4v-2h12.2l-4.6-4.6z"/></svg></span></button></li>
   </ul>
 </section>
@@ -546,10 +551,10 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   <div class="sobre-grade">
     <div class="sobre-foto"><img src="sobre.webp" alt="Rick Ribeiro sorrindo enquanto usa o celular" width="800" height="796" loading="lazy"></div>
     <div class="sobre-texto" lang="pt-BR">
-      <h2 id="sobre-titulo">Prazer, <em>Rick Ribeiro</em></h2>
+      <h2 id="sobre-titulo">Sobre <em>Rick Ribeiro</em></h2>
       <div class="redes"><a class="rede" href="https://www.instagram.com/rickribeiro.ads/" target="_blank" rel="noopener" aria-label="Instagram do Rick Ribeiro"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 4.6a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4Zm0 8.6a3.4 3.4 0 1 1 0-6.8 3.4 3.4 0 0 1 0 6.8Zm5.4-9.9a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/></svg><span>Instagram</span></a><a class="rede" href="https://www.youtube.com/@rickribeiroads5994" target="_blank" rel="noopener" aria-label="YouTube do Rick Ribeiro"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.7 15.1V8.9l5.8 3.1-5.8 3.1Z"/></svg><span>YouTube</span></a></div>
       <p>Sempre com os olhos atentos nos céus esperando a segunda vinda de Cristo. Maranata! Esposo de uma linda fotógrafa, <a class="rede-texto" href="https://www.instagram.com/marcelaabreufotografa/" target="_blank" rel="noopener">Marcela Abreu <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 4.6a5.2 5.2 0 1 0 0 10.4 5.2 5.2 0 0 0 0-10.4Zm0 8.6a3.4 3.4 0 1 1 0-6.8 3.4 3.4 0 0 1 0 6.8Zm5.4-9.9a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4Z"/></svg></a>, e pai de dois meninos geniais. Três décadas atuando em vendas e marketing, desde 2017 trabalhando exclusivamente no mundo digital.</p>
-      <p>Já vendi desde roupas, acessórios, fastfood, livros, imóvel de luxo, pacote de viagens, cotas de resort, ensaios fotográficos, infoprodutos, consultoria, tratores, máquina de cartão, sites, consultas médicas, e por aí vai! Já gerenciei anúncios para centenas de negócios. Desde grandes marcas como: Chilli Beans, New Holland, Five Senses Resorts, Ferpam, dentre outras. Até os menores empreendedores, do tipo que vende bolo na feira. Se um produto ou serviço pode ser anunciado em alguma plataforma, lá eu estarei! O que você vende? Vamos anunciar?!</p>
+      <p>Já vendi roupas, acessórios, fastfood, livros, imóvel de luxo, pacote de viagens, cotas de resort, ensaios fotográficos, infoprodutos, consultoria, tratores, máquina de cartão, sites, consultas médicas, e por aí vai! Já gerenciei anúncios para centenas de negócios. Desde grandes marcas como: Chilli Beans, New Holland, Five Senses Resorts, Ferpam, dentre outras. Até os menores empreendedores, do tipo que vende bolo na feira. Se um produto ou serviço pode ser anunciado em alguma plataforma, lá eu estarei! O que você vende? Vamos anunciar?!</p>
     </div>
   </div>
 </section>
@@ -742,8 +747,8 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
       lista_titulo: "Sistema de 4 pilares",
       lista: ["Criamos anúncios testados e validados que prospectam clientes compradores", "Otimizamos os processos de venda (automações de atendimento, bots, CRM...)", "Fazemos um rastreamento dos leads, captura de dados que viram inteligência acumulativa para os anúncios", "Armazenamos e tratamos os dados capturados para relatórios de análise e devolução de inteligência para os anúncios"],
       fim_titulo: "Para quem é", fim: "Empresários com operações robustas e time de vendas, que já investem valores consideráveis em anúncios e desejam obter melhores resultados." },
-    { titulo: "Comunidade", sub: "para empreendedores individuais",
-      intro: "Ambiente criado para empreendedores individuais que precisam de ajuda nas vendas e gestão dos seus negócios.",
+    { titulo: "Comunidade Lab de Vendas", sub: "para empreendedores individuais",
+      intro: "O *Laboratório de Vendas* é uma comunidade criada para empreendedores individuais que precisam de ajuda nas vendas e gestão dos seus negócios.",
       lista_titulo: "O que você acessa na comunidade",
       lista: ["Eu vou programar um anúncio de prospecção para captar clientes para você. Isso mesmo! Você entra com a verba, eu faço o anúncio e você começa a receber os clientes", "Além disso, você vai acessar nosso encontro online mensal. Uma sala no Google Meet sempre com um novo especialista tirando dúvidas dos membros e ensinando algo de valor sobre negócios", "Acesso a todos os encontros gravados, com aulas práticas sobre os mais diversos assuntos do empreendedorismo"],
       fim_titulo: "Para quem é", fim: "Empreendedores individuais que querem expandir, e que podem investir um pouco de dinheiro mensalmente para o crescimento do seu negócio." },
@@ -791,7 +796,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
     var s = SERVICOS[i], c = el("div");
     c.appendChild(el("div", "ie-num", "0" + (i + 1)));
     c.appendChild(el("h2", "", s.titulo)); c.appendChild(el("p", "ie-sub", s.sub));
-    c.appendChild(el("p", "ie-intro", s.intro));
+    var intro = el("p", "ie-intro"); intro.innerHTML = s.intro.replace(/\*([^*]+)\*/g, "<strong>$1</strong>"); c.appendChild(intro);
     c.appendChild(el("h3", "", s.lista_titulo));
     var ul = el("ul"); s.lista.forEach(function (t) { ul.appendChild(el("li", "", t)); }); c.appendChild(ul);
     if (s.fim) { c.appendChild(el("h3", "", s.fim_titulo)); c.appendChild(el("p", "", s.fim)); }
@@ -877,8 +882,8 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   // ===== Google Ads =====
   // Os rótulos serão preenchidos depois que as conversões forem criadas no Google Ads.
   var GADS_ID = 'AW-513352705';
-  var GADS_ROTULO_WHATSAPP = '';   // ex.: 'AbCdEf123' (conversão "Site - Clique no WhatsApp")
-  var GADS_ROTULO_LEAD     = '';   // ex.: 'XyZ987'    (conversão "Site - Lead formulário")
+  var GADS_ROTULO_WHATSAPP = 'TjzgCLSRkrkdEIHI5PQB';   // conversão "Site - Clique no WhatsApp"
+  var GADS_ROTULO_LEAD     = 'QoqqCLGRkrkdEIHI5PQB';   // conversão "Site - Lead formulário"
 
   function enviarGoogle(rotulo, id, email) {
     try {
