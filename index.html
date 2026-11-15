@@ -19,6 +19,15 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=2805257373111925&ev=PageView&noscript=1"/></noscript>
 <!-- Fim Meta Pixel -->
+<!-- Google tag (gtag.js) - AW-513352705 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-513352705"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-513352705');
+</script>
+<!-- Fim Google tag -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Anton&family=Unbounded:wght@900&family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Orbitron:wght@500;700&display=swap">
@@ -550,7 +559,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   <h3>Quem é o responsável</h3><p>Rick Ribeiro Ads. Fale comigo pelo WhatsApp desta página.</p>
   <h3>Quais dados guardamos</h3><ul><li>Seu e-mail</li><li>De onde veio a sua visita (anúncio ou busca)</li><li>Dados do aparelho usado para acessar a página</li></ul>
   <h3>Para que usamos</h3><p>Para atender você e medir a qualidade dos nossos anúncios. Para essa medição, os dados são enviados de forma protegida ao Facebook (Meta) e ao Google.</p>
-  <h3>Cookies e pixel</h3><p>Usamos cookies e o pixel da Meta para saber como você chegou até a página e medir os resultados dos anúncios.</p>
+  <h3>Cookies e pixel</h3><p>Usamos cookies e o pixel da Meta para saber como você chegou até a página e medir os resultados dos anúncios. Também usamos a tag do Google (Google Ads) para medir os resultados dos anúncios e criar públicos de remarketing.</p>
   <h3>O que não fazemos</h3><p>Não vendemos seus dados.</p>
   <h3>Seus direitos</h3><p>Você pode pedir para ver, corrigir ou apagar seus dados quando quiser. É só falar comigo pelo WhatsApp.</p>
 </footer>
@@ -702,6 +711,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
       if (navigator.sendBeacon) { try { foi = navigator.sendBeacon(LEAD_URL, corpoL); } catch (e) {} }
       if (!foi) fetch(LEAD_URL, { method: "POST", mode: "no-cors", body: corpoL, keepalive: true }).catch(function () {});
       if (window.fbq) fbq("track", "Lead", {}, { eventID: leadId });
+      if (window.rrGoogleLead) window.rrGoogleLead(leadId, d.email);
     } catch (e) {}
     pre.textContent = JSON.stringify(d, null, 2);
     if (MODO_TESTE) {
@@ -864,6 +874,24 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
     } catch (e) {}
   }
 
+  // ===== Google Ads =====
+  // Os rótulos serão preenchidos depois que as conversões forem criadas no Google Ads.
+  var GADS_ID = 'AW-513352705';
+  var GADS_ROTULO_WHATSAPP = '';   // ex.: 'AbCdEf123' (conversão "Site - Clique no WhatsApp")
+  var GADS_ROTULO_LEAD     = '';   // ex.: 'XyZ987'    (conversão "Site - Lead formulário")
+
+  function enviarGoogle(rotulo, id, email) {
+    try {
+      if (!window.gtag) return;
+      if (email) gtag('set', 'user_data', { email: String(email).trim().toLowerCase() });
+      if (rotulo) {
+        gtag('event', 'conversion', { send_to: GADS_ID + '/' + rotulo, transaction_id: id });
+      }
+    } catch (e) {}
+  }
+  // Usado pelo formulário (Lead), que fica em outro script
+  window.rrGoogleLead = function (id, email) { enviarGoogle(GADS_ROTULO_LEAD, id, email); };
+
   // 3) Evento no navegador (pixel) com o mesmo id, para a Meta não contar duas vezes
   function enviarPixel(evento, id) {
     try { if (window.fbq) fbq('track', evento, {}, { eventID: id }); } catch (e) {}
@@ -899,6 +927,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
         a.href = w.toString();
       } catch (e) {}
       enviarPixel('Contact', id);
+      enviarGoogle(GADS_ROTULO_WHATSAPP, id);
       enviarServidor('Contact', id, 'whatsapp', a.href);
       return;
     }
