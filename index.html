@@ -691,6 +691,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
         event_name: "Lead", event_id: leadId, event_time: Math.floor(Date.now() / 1000),
         email: d.email, origem: d.origem, codigo_visita: rrL.ref || "", ref: rrL.ref || "",
         event_source_url: location.href, user_agent: navigator.userAgent,
+        ip: (function () { try { return sessionStorage.getItem("rra_ip") || ""; } catch (e) { return ""; } })(),
         fbp: lerCookie("_fbp") || "", fbc: fbcL
       };
       ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "wbraid", "gbraid"].forEach(function (k) { lead[k] = rrL[k] || ""; });
@@ -826,6 +827,14 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 
   function fbc() { return cookie('_fbc') || r.fbc_criado || ''; }
 
+  // IP público do visitante (Cloudflare), uma vez por sessão; se falhar, segue vazio
+  function ipAtual() { try { return sessionStorage.getItem('rra_ip') || ''; } catch (e) { return ''; } }
+  if (!ipAtual() && window.fetch) {
+    fetch('https://www.cloudflare.com/cdn-cgi/trace').then(function (x) { return x.text(); }).then(function (t) {
+      var m = t.match(/^ip=(.+)$/m); if (m) { try { sessionStorage.setItem('rra_ip', m[1].trim()); } catch (e) {} }
+    }).catch(function () {});
+  }
+
   // 2) Envia o evento para o Make (API de Conversões, lado do servidor)
   function enviarServidor(evento, id, destino, link) {
     try {
@@ -835,6 +844,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
         event_time: String(Math.floor(Date.now() / 1000)),
         event_source_url: location.href,
         user_agent: navigator.userAgent,
+        ip: ipAtual(),
         fbp: cookie('_fbp'),
         fbc: fbc(),
         ref: r.ref,
