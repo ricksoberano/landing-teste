@@ -6,6 +6,19 @@
 <meta name="robots" content="noindex">
 <title>Rick Ribeiro Ads</title>
 <meta name="facebook-domain-verification" content="5rxce0t2m8nqoo9o9ml3nrqavoeg3p" />
+<!-- Meta Pixel - rickribeiroads (2805257373111925) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2805257373111925');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2805257373111925&ev=PageView&noscript=1"/></noscript>
+<!-- Fim Meta Pixel -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Anton&family=Unbounded:wght@900&family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Orbitron:wght@500;700&display=swap">
@@ -537,6 +550,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   <h3>Quem é o responsável</h3><p>Rick Ribeiro Ads. Fale comigo pelo WhatsApp desta página.</p>
   <h3>Quais dados guardamos</h3><ul><li>Seu e-mail</li><li>De onde veio a sua visita (anúncio ou busca)</li><li>Dados do aparelho usado para acessar a página</li></ul>
   <h3>Para que usamos</h3><p>Para atender você e medir a qualidade dos nossos anúncios. Para essa medição, os dados são enviados de forma protegida ao Facebook (Meta) e ao Google.</p>
+  <h3>Cookies e pixel</h3><p>Usamos cookies e o pixel da Meta para saber como você chegou até a página e medir os resultados dos anúncios.</p>
   <h3>O que não fazemos</h3><p>Não vendemos seus dados.</p>
   <h3>Seus direitos</h3><p>Você pode pedir para ver, corrigir ou apagar seus dados quando quiser. É só falar comigo pelo WhatsApp.</p>
 </footer>
@@ -544,7 +558,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
 <script>
 (function () {
   // ===== CONFIGURAÇÃO (preencher antes de usar de verdade) =====
-  var WEBHOOK_URL = "https://hook.us2.make.com/h9qhghs5bvnbo5das30wfoibky1tfhy9";            // endereço do webhook "landing_page_google" do Make
+  var WEBHOOK_URL = "";
   var WHATSAPP = "556399457700";  // número que recebe a conversa, só dígitos, com 55 e DDD
   var MODO_TESTE = false;
   // =============================================================
@@ -664,26 +678,36 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
     if (!document.getElementById("aceite").checked) return falha("Marque a caixa de concordância para continuar.");
 
     var interesse = window.RR_INTERESSE || "";
-    var texto = interesse ? "Olá, Rick! Vim pelo seu site e tenho interesse em: " + interesse + ". (cód. " + codigo + ")" : "Olá, Rick! Vim pelo seu site e quero falar sobre as minhas vendas. (cód. " + codigo + ")";
+    try { var rr = JSON.parse(localStorage.getItem("rra_rastreio")) || {}; if (rr.ref) { codigo = rr.ref; d.codigo_visita = rr.ref; } } catch (e) {}
+    var texto = interesse ? "Olá, Rick! Vim pelo seu site e tenho interesse em: " + interesse + "." : "Olá, Rick! Vim pelo seu site e quero falar sobre as minhas vendas.";
     var link = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto);
 
-    if (WEBHOOK_URL) {
-      try {
-        var corpo = new URLSearchParams();
-        Object.keys(d).forEach(function (k) { corpo.append(k, String(d[k])); });
-        fetch(WEBHOOK_URL, { method: "POST", mode: "no-cors", body: corpo, keepalive: true })
-          .then(function () { status.textContent = "Enviado ao Make."; })
-          .catch(function () { status.textContent = "Não foi possível falar com o Make."; });
-      } catch (e) { status.textContent = "Não foi possível falar com o Make."; }
-    } else {
-      status.textContent = "Teste: nada foi enviado, porque o endereço do Make ainda está vazio. Estes são os dados que iriam:";
-    }
+    // Lead: navegador (pixel) + servidor (Make), com o mesmo event_id
+    try {
+      var rrL = JSON.parse(localStorage.getItem("rra_rastreio")) || {};
+      var leadId = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+      var fbcL = lerCookie("_fbc") || rrL.fbc_criado || (rrL.fbclid ? "fb.1." + Date.now() + "." + rrL.fbclid : "");
+      var lead = {
+        event_name: "Lead", event_id: leadId, event_time: Math.floor(Date.now() / 1000),
+        email: d.email, origem: d.origem, codigo_visita: rrL.ref || "", ref: rrL.ref || "",
+        event_source_url: location.href, user_agent: navigator.userAgent,
+        fbp: lerCookie("_fbp") || "", fbc: fbcL
+      };
+      ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "gclid", "wbraid", "gbraid"].forEach(function (k) { lead[k] = rrL[k] || ""; });
+      var corpoL = new URLSearchParams();
+      Object.keys(lead).forEach(function (k) { corpoL.append(k, String(lead[k])); });
+      var LEAD_URL = "https://hook.us2.make.com/498j0rx2llg8icl9psgs1f5gtwhrwrbd";
+      var foi = false;
+      if (navigator.sendBeacon) { try { foi = navigator.sendBeacon(LEAD_URL, corpoL); } catch (e) {} }
+      if (!foi) fetch(LEAD_URL, { method: "POST", mode: "no-cors", body: corpoL, keepalive: true }).catch(function () {});
+      if (window.fbq) fbq("track", "Lead", {}, { eventID: leadId });
+    } catch (e) {}
     pre.textContent = JSON.stringify(d, null, 2);
     if (MODO_TESTE) {
       var a = document.getElementById("abrir");
       a.href = link; a.hidden = false;
     } else {
-      window.location.href = link;
+      var ir = document.createElement("a"); ir.href = link; ir.style.display = "none"; document.body.appendChild(ir); ir.click();
     }
   });
 })();
@@ -775,5 +799,117 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && aberto) aberto.fechar(); });
 })();
 </script>
+<!-- Rastreamento de funil - rickribeiroads -->
+<script>
+(function () {
+  var WEBHOOK = 'https://hook.us2.make.com/498j0rx2llg8icl9psgs1f5gtwhrwrbd';
+  var CHAVE = 'rra_rastreio';
+
+  function novoId() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+  function cookie(nome) {
+    var m = document.cookie.match('(?:^|; )' + nome + '=([^;]*)');
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  function ler() { try { return JSON.parse(localStorage.getItem(CHAVE)) || {}; } catch (e) { return {}; } }
+  function gravar(d) { try { localStorage.setItem(CHAVE, JSON.stringify(d)); } catch (e) {} }
+
+  // 1) Guarda a origem da visita e um código curto da pessoa
+  var url = new URLSearchParams(location.search);
+  var r = ler();
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
+   'fbclid', 'gclid', 'wbraid', 'gbraid'].forEach(function (k) {
+    if (url.get(k)) r[k] = url.get(k);
+  });
+  if (url.get('fbclid')) r.fbc_criado = 'fb.1.' + Date.now() + '.' + url.get('fbclid');
+  if (!r.ref) r.ref = Math.random().toString(36).slice(2, 8).toUpperCase();
+  gravar(r);
+
+  function fbc() { return cookie('_fbc') || r.fbc_criado || ''; }
+
+  // 2) Envia o evento para o Make (API de Conversões, lado do servidor)
+  function enviarServidor(evento, id, destino, link) {
+    try {
+      var d = new URLSearchParams({
+        event_name: evento,
+        event_id: id,
+        event_time: String(Math.floor(Date.now() / 1000)),
+        event_source_url: location.href,
+        user_agent: navigator.userAgent,
+        fbp: cookie('_fbp'),
+        fbc: fbc(),
+        ref: r.ref,
+        destino: destino || '',
+        link: link || '',
+        utm_source: r.utm_source || '',
+        utm_medium: r.utm_medium || '',
+        utm_campaign: r.utm_campaign || '',
+        utm_content: r.utm_content || '',
+        utm_term: r.utm_term || '',
+        gclid: r.gclid || '',
+        wbraid: r.wbraid || '',
+        gbraid: r.gbraid || ''
+      });
+      if (navigator.sendBeacon) { navigator.sendBeacon(WEBHOOK, d); }
+      else { fetch(WEBHOOK, { method: 'POST', body: d, keepalive: true, mode: 'no-cors' }); }
+    } catch (e) {}
+  }
+
+  // 3) Evento no navegador (pixel) com o mesmo id, para a Meta não contar duas vezes
+  function enviarPixel(evento, id) {
+    try { if (window.fbq) fbq('track', evento, {}, { eventID: id }); } catch (e) {}
+  }
+
+  // 4) Camada 2 – ViewContent: rolou metade da página OU ficou 30 segundos (só no navegador)
+  var vcFeito = false;
+  function viewContent() {
+    if (vcFeito) return;
+    vcFeito = true;
+    enviarPixel('ViewContent', novoId());
+  }
+  setTimeout(viewContent, 30000);
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement;
+    if ((h.scrollTop + window.innerHeight) / h.scrollHeight >= 0.5) viewContent();
+  }, { passive: true });
+
+  // 5) Camadas 3a e 3b – cliques nos botões de WhatsApp e da Hotmart
+  document.addEventListener('click', function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var id = novoId();
+
+    // WhatsApp -> Contact (e coloca o código da pessoa na mensagem pronta)
+    if (/wa\.me|api\.whatsapp\.com|whatsapp:\/\//i.test(href)) {
+      try {
+        var w = new URL(a.href);
+        var texto = w.searchParams.get('text') || 'Olá! Vim pelo site.';
+        if (texto.indexOf('[cód. ') === -1) texto += ' [cód. ' + r.ref + ']';
+        w.searchParams.set('text', texto);
+        a.href = w.toString();
+      } catch (e) {}
+      enviarPixel('Contact', id);
+      enviarServidor('Contact', id, 'whatsapp', a.href);
+      return;
+    }
+
+    // Hotmart -> InitiateCheckout (e leva a origem para o checkout)
+    if (/hotmart\.com/i.test(href)) {
+      try {
+        var h = new URL(a.href);
+        if (!h.searchParams.get('sck')) h.searchParams.set('sck', r.ref);
+        if (!h.searchParams.get('src')) h.searchParams.set('src', r.utm_source || 'site');
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(function (k) {
+          if (r[k] && !h.searchParams.get(k)) h.searchParams.set(k, r[k]);
+        });
+        a.href = h.toString();
+      } catch (e) {}
+      enviarPixel('InitiateCheckout', id);
+      enviarServidor('InitiateCheckout', id, 'hotmart', a.href);
+    }
+  }, true);
+})();
+</script>
+<!-- Fim Rastreamento de funil -->
 </body>
 </html>
