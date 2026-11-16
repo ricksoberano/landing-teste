@@ -922,14 +922,14 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
     var href = a.getAttribute('href') || '';
     var id = novoId();
 
-    // WhatsApp -> Contact (e coloca o código da pessoa na mensagem pronta)
+    // WhatsApp -> Contact (o código da visita vai só para o Make, não aparece na mensagem)
     if (/wa\.me|api\.whatsapp\.com|whatsapp:\/\//i.test(href)) {
       try {
         var w = new URL(a.href);
-        var texto = w.searchParams.get('text') || 'Olá! Vim pelo site.';
-        if (texto.indexOf('[cód. ') === -1) texto += ' [cód. ' + r.ref + ']';
-        w.searchParams.set('text', texto);
-        a.href = w.toString();
+        if (!w.searchParams.get('text')) {
+          w.searchParams.set('text', 'Olá, Rick! Vim pelo seu site e quero falar sobre as minhas vendas.');
+          a.href = w.toString();
+        }
       } catch (e) {}
       enviarPixel('Contact', id);
       enviarGoogle(GADS_ROTULO_WHATSAPP, id);
