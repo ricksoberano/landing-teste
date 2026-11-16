@@ -697,6 +697,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
     var link = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto);
 
     // Lead: navegador (pixel) + servidor (Make), com o mesmo event_id
+    window.RR_EMAIL = d.email; // usado pelo Contact logo em seguida (só na memória da página)
     try {
       var rrL = JSON.parse(localStorage.getItem("rra_rastreio")) || {};
       var leadId = Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
@@ -860,6 +861,7 @@ body::after { content: ""; position: fixed; inset: 0; pointer-events: none; z-in
         event_source_url: location.href,
         user_agent: navigator.userAgent,
         ip: ipAtual(),
+        email: evento === 'Contact' ? String(window.RR_EMAIL || '').trim().toLowerCase() : '',
         fbp: cookie('_fbp'),
         fbc: fbc(),
         ref: r.ref,
