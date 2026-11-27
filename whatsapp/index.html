@@ -16,18 +16,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Unbounded:wght@900&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 
-<!-- Meta Pixel - rickribeiroads (2805257373111925) -->
+<!-- Meta Pixel - Aulas: Anuncios no WhatsApp (3487597731470490) -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
 n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '2805257373111925');
+fbq('init', '3487597731470490');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" alt=""
-src="https://www.facebook.com/tr?id=2805257373111925&ev=PageView&noscript=1"/></noscript>
+src="https://www.facebook.com/tr?id=3487597731470490&ev=PageView&noscript=1"/></noscript>
 <!-- Google tag (Ads + Analytics) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-513352705"></script>
 <script>
@@ -553,9 +553,10 @@ var MENSAGEM = 'Olá, gostaria de resgatar o cupom e adquirir as aulas de anúnc
 var TRECHO_YOUTUBE = 'jp26Xq-nL8Y'; // id do vídeo do trecho de 3 min no YouTube (https://youtu.be/jp26Xq-nL8Y)
 var GADS_CONVERSAO = 'AW-513352705/TjzgCLSRkrkdEIHI5PQB';   // conversão "Site - Clique no WhatsApp"
 var GADS_LEAD = 'AW-513352705/QoqqCLGRkrkdEIHI5PQB';        // conversão "Site - Lead formulário"
-var PIXEL_ID = '2805257373111925';
-// Mesmo webhook do site principal (Make → API de Conversões). Os eventos desta página vão com origem "aulas-whatsapp".
-var WEBHOOK = 'https://hook.us2.make.com/498j0rx2llg8icl9psgs1f5gtwhrwrbd';
+var PIXEL_ID = '3487597731470490';
+// Webhook do cenário do curso no Make ("Rick: Aulas de anuncio com WhatsApp" → API de Conversões, pixel do curso).
+// O cenário só trata como evento do site o que chega com origem "aulas-whatsapp".
+var WEBHOOK = 'https://hook.us2.make.com/u9npf37tukexv2u4ylc2xu71ya89ry3u';
 var ORIGEM = 'aulas-whatsapp';
 // No computador (localhost/arquivo) nada é enviado ao Make: os eventos só aparecem no console.
 var LOCAL = /^(localhost|127\.0\.0\.1|)$/.test(location.hostname);
@@ -636,11 +637,18 @@ function irParaWhatsApp() {
   try { w = window.open(link, '_blank'); } catch (e) {}
   if (!w) location.href = link;
 }
-function contato(telefone) {
+/* Pediu o cupom = intenção de compra (InitiateCheckout). Lead, QualifiedLead e Purchase vêm só do WhatsApp. */
+function intencao(telefone) {
   var id = novoId();
-  try { fbq('track', 'Contact', { content_name: 'Aulas anúncio WhatsApp', local: localCta }, { eventID: id }); } catch (e) {}
-  try { gtag('event', 'conversion', { send_to: GADS_CONVERSAO, transaction_id: id }); gtag('event', 'clique_whatsapp_aulas', { local: localCta }); } catch (e) {}
-  enviarServidor('Contact', id, telefone, localCta);
+  try {
+    if (telefone) fbq('init', PIXEL_ID, { ph: '55' + telefone });   // a Meta criptografa antes de enviar
+    fbq('track', 'InitiateCheckout', { content_name: 'Aulas anúncio WhatsApp', currency: 'BRL', value: 37, local: localCta }, { eventID: id });
+  } catch (e) {}
+  try {
+    if (telefone) { gtag('set', 'user_data', { phone_number: '+55' + telefone }); gtag('event', 'conversion', { send_to: GADS_LEAD, transaction_id: id + 'l' }); }
+    gtag('event', 'conversion', { send_to: GADS_CONVERSAO, transaction_id: id }); gtag('event', 'clique_whatsapp_aulas', { local: localCta });
+  } catch (e) {}
+  enviarServidor('InitiateCheckout', id, telefone, localCta);
 }
 
 document.querySelectorAll('[data-cta]').forEach(function (a) {
@@ -656,15 +664,10 @@ document.getElementById('form-cupom').addEventListener('submit', function (ev) {
   ev.preventDefault();
   var d = numeroValido(campoTel.value);
   if (!d) { erroTel.hidden = false; campoTel.focus(); return; }
-  // Lead com o número: pixel (a Meta criptografa antes de enviar) + servidor + Google, mesmo id
-  var id = novoId();
-  try { fbq('init', PIXEL_ID, { ph: '55' + d }); fbq('track', 'Lead', { content_name: 'Cupom aulas anúncio WhatsApp' }, { eventID: id }); } catch (e) {}
-  try { gtag('set', 'user_data', { phone_number: '+55' + d }); gtag('event', 'conversion', { send_to: GADS_LEAD, transaction_id: id }); } catch (e) {}
-  enviarServidor('Lead', id, d, localCta);
-  contato(d);
+  intencao(d);
   irParaWhatsApp();
 });
-document.getElementById('sem-numero').addEventListener('click', function () { contato(''); irParaWhatsApp(); });
+document.getElementById('sem-numero').addEventListener('click', function () { intencao(''); irParaWhatsApp(); });
 
 
 /* ---------------- Trecho da aula ---------------- */
