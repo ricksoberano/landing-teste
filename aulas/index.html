@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suas aulas · Como Fazer Anúncio pelo WhatsApp</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Gothic&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel - rickribeiroads (2805257373111925) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2805257373111925');
+fbq('track', 'PageView');
+</script>
+<!-- Google tag (Analytics) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L5HC6EHV3P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-L5HC6EHV3P');
+</script>
+
+<style>
+:root {
+  --petroleo: #0F9494; --petroleo-escuro: #0B6F6F; --ciano: #77E2E1; --gelo: #EEF9F9;
+  --tinta: #0B1F20; --suave: #4A6466; --linha: #D3E8E8; --destaque: #FF6B1A;
+  --verde-wpp: #1FAF54; --branco: #fff; --erro-fundo: #FFF1E8; --erro: #A8400A;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: "Plus Jakarta Sans", system-ui, sans-serif; font-size: 18px; line-height: 1.5;
+  color: var(--tinta); background: linear-gradient(180deg, #EAF8F8 0, #F8FCFC 360px, #fff 100%); min-height: 100vh; }
+.caixa { max-width: 560px; margin: 0 auto; padding: 24px 16px 48px; }
+h1, h2 { font-family: "League Gothic", sans-serif; font-weight: 400; text-transform: uppercase; line-height: .95; margin: 0; }
+h1 { font-size: 52px; } h2 { font-size: 36px; }
+h1 em, h2 em { font-style: normal; color: var(--petroleo); }
+p { margin: 0 0 14px; }
+.logo { display: block; height: 44px; margin: 4px auto 22px; }
+.etiqueta { display: block; font-weight: 800; font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--petroleo); margin-bottom: 6px; }
+button, .botao { font: inherit; cursor: pointer; border: 0; border-radius: 14px; display: flex; align-items: center;
+  justify-content: center; gap: 10px; width: 100%; min-height: 60px; padding: 14px 18px; font-weight: 800; font-size: 19px;
+  text-decoration: none; transition: transform .1s, background .2s; }
+button:active, .botao:active { transform: scale(.98); }
+.botao-principal { background: var(--petroleo); color: #fff; box-shadow: 0 6px 0 var(--petroleo-escuro); }
+.botao-principal:disabled { opacity: .7; cursor: wait; }
+.botao-wpp { background: var(--verde-wpp); color: #fff; box-shadow: 0 6px 0 #168A42; }
+.botao-claro { background: #fff; color: var(--tinta); border: 2px solid var(--tinta); box-shadow: 4px 4px 0 var(--tinta); }
+.botao svg { flex: none; }
+
+/* ===== Entrada ===== */
+#entrada .cartao { background: #fff; border-radius: 20px; padding: 24px 20px; box-shadow: 0 10px 30px rgba(0,60,60,.10); margin-top: 18px; }
+label { display: block; font-weight: 800; font-size: 19px; margin-bottom: 8px; }
+.campo-tel { width: 100%; font: inherit; font-size: 25px; font-weight: 700; letter-spacing: .02em; padding: 14px 16px;
+  border: 3px solid var(--linha); border-radius: 14px; color: var(--tinta); background: #fff; outline: none; text-align: center; }
+.campo-tel:focus { border-color: var(--petroleo); box-shadow: 0 0 0 4px rgba(15,148,148,.15); }
+.ajuda-campo { font-size: 16px; color: var(--suave); margin: 10px 0 18px; text-align: center; }
+.mensagem { border-radius: 14px; padding: 14px 16px; font-size: 17px; margin-top: 18px; display: none; }
+.mensagem.erro { display: block; background: var(--erro-fundo); color: var(--erro); }
+.mensagem.erro b { color: var(--tinta); }
+.mensagem .botao { margin-top: 12px; }
+.cadeado { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: var(--suave); margin-top: 18px; }
+
+/* ===== Aulas ===== */
+#aulas { display: none; }
+.topo { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.topo .logo { margin: 0; height: 38px; }
+.sair { width: auto; min-height: 44px; padding: 8px 14px; font-size: 15px; background: transparent; color: var(--suave);
+  border: 2px solid var(--linha); border-radius: 12px; }
+.ola { margin-bottom: 26px; }
+.aula { background: #fff; border-radius: 20px; padding: 18px 14px 16px; box-shadow: 0 10px 30px rgba(0,60,60,.10); margin-bottom: 22px; }
+.aula h2 { font-size: 30px; margin: 2px 0 12px; }
+.aula .duracao { font-size: 15px; color: var(--suave); font-weight: 700; }
+.video { position: relative; width: 100%; aspect-ratio: 9 / 16; max-height: 78vh; margin: 0 auto; background: #000;
+  border-radius: 14px; overflow: hidden; }
+.video iframe, .video > div { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.marca-dagua { position: absolute; z-index: 3; pointer-events: none; font-size: 13px; font-weight: 700; color: rgba(255,255,255,.62);
+  background: rgba(0,0,0,.28); padding: 5px 9px; border-radius: 8px; text-shadow: 0 1px 2px rgba(0,0,0,.5);
+  transition: top 1.2s, left 1.2s, right 1.2s, bottom 1.2s; white-space: nowrap; }
+.video:fullscreen { max-height: none; border-radius: 0; }
+.video:fullscreen .marca-dagua { font-size: 18px; }
+.botao-tela { margin-top: 12px; min-height: 52px; font-size: 17px; }
+.material { background: #fff; border-radius: 20px; padding: 20px 16px; box-shadow: 0 10px 30px rgba(0,60,60,.10); margin-bottom: 22px; }
+.material h2 { font-size: 32px; margin-bottom: 10px; }
+.prompt { background: var(--gelo); border: 2px dashed var(--petroleo); border-radius: 14px; padding: 14px; margin: 14px 0 0; }
+.prompt .nome { display: block; font-weight: 800; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--petroleo); margin-bottom: 6px; }
+.prompt p { font-size: 17px; margin-bottom: 12px; }
+.prompt .trocar { background: #FFE1CF; color: #9A3A08; font-weight: 700; border-radius: 4px; padding: 0 4px; }
+.copiar { min-height: 52px; font-size: 17px; background: var(--tinta); color: #fff; }
+.copiar.feito { background: var(--petroleo); }
+.rodape { font-size: 14px; color: var(--suave); text-align: center; margin-top: 30px; }
+.rodape a { color: var(--suave); }
+.carregando { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(255,255,255,.4); border-top-color: #fff;
+  border-radius: 50%; animation: gira .8s linear infinite; }
+@keyframes gira { to { transform: rotate(360deg); } }
+.aviso-teste { background: #FFF1E8; color: var(--erro); font-size: 14px; font-weight: 700; text-align: center; padding: 8px; border-radius: 10px; margin-bottom: 14px; }
+</style>
+</head>
+<body>
+<div class="caixa">
+
+  <!-- ===================== TELA DE ENTRADA ===================== -->
+  <main id="entrada">
+    <img class="logo" src="logo-rick-preto.png" alt="Rick Ribeiro">
+    <div id="aviso-teste" class="aviso-teste" hidden>Modo de teste: use o número (63) 99999-1234</div>
+    <span class="etiqueta">Área do aluno</span>
+    <h1>Suas aulas de <em>anúncio pelo WhatsApp</em></h1>
+    <form class="cartao" id="form-entrada" novalidate>
+      <label for="tel">Digite o seu número de WhatsApp</label>
+      <input class="campo-tel" id="tel" type="tel" inputmode="numeric" autocomplete="tel-national"
+             placeholder="(00) 00000-0000" maxlength="16" aria-describedby="ajuda-tel">
+      <p class="ajuda-campo" id="ajuda-tel">Use o mesmo número que você confirmou comigo na conversa.
+        Com DDD, sem o +55.</p>
+      <button class="botao botao-principal" id="botao-entrar" type="submit">Entrar nas minhas aulas</button>
+      <div class="mensagem" id="mensagem" role="alert" aria-live="polite"></div>
+      <div class="cadeado">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        <span>Este acesso é pessoal e fica ligado ao seu número.</span>
+      </div>
+    </form>
+    <p class="rodape">Ao entrar, você concorda com o uso do seu número para liberar o acesso e melhorar as aulas,
+      conforme os <a href="/whatsapp/#termos">Termos de compra e privacidade</a>.</p>
+  </main>
+
+  <!-- ===================== ÁREA DE AULAS ===================== -->
+  <main id="aulas">
+    <div class="topo">
+      <img class="logo" src="logo-rick-preto.png" alt="Rick Ribeiro">
+      <button class="sair" id="sair" type="button">Sair</button>
+    </div>
+    <div class="ola">
+      <span class="etiqueta">Acesso liberado</span>
+      <h1>Olá, <em id="nome-aluno">aluno</em>!</h1>
+      <p style="margin-top:10px">Suas aulas estão aqui. Assista com calma, com o WhatsApp Business aberto do lado, e faça junto.</p>
+    </div>
+
+    <div id="lista-aulas"></div>
+
+    <section class="material">
+      <span class="etiqueta">Material de apoio</span>
+      <h2>Os <em>guias rápidos</em></h2>
+      <p>Só as telas, com o botão certo marcado. Para deixar no celular e consultar na hora de fazer.</p>
+      <p style="margin:18px 0 8px"><b>Guia 1 · Como subir o anúncio</b><br>Do botão Ferramentas até "Pagar e criar anúncio".</p>
+      <a class="botao botao-claro" id="baixar-guia1" href="#" target="_blank" rel="noopener">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>
+        Baixar o Guia 1 (PDF)</a>
+      <p style="margin:22px 0 8px"><b>Guia 2 · Como criar a imagem com IA</b><br>Do Modo IA do Google até a imagem na sua galeria.</p>
+      <a class="botao botao-claro" id="baixar-guia2" href="#" target="_blank" rel="noopener">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>
+        Baixar o Guia 2 (PDF)</a>
+    </section>
+
+    <section class="material">
+      <span class="etiqueta">Copie e cole</span>
+      <h2>Modelos de <em>texto</em></h2>
+      <p>Toque em <b>Copiar</b>, abra o Modo IA do Google e cole. Troque só o que estiver <span class="trocar" style="background:#FFE1CF;color:#9A3A08;font-weight:700;border-radius:4px;padding:0 4px">em laranja</span>.</p>
+      <div id="lista-prompts"></div>
+    </section>
+
+    <section class="material">
+      <span class="etiqueta">Precisa de ajuda?</span>
+      <h2>Fale <em>comigo</em></h2>
+      <p>Travou em algum passo? Me chame no WhatsApp que eu te ajudo.</p>
+      <a class="botao botao-wpp" id="ajuda-wpp" href="#" target="_blank" rel="noopener">
+        <svg width="26" height="26" viewBox="0 0 120 120" aria-hidden="true"><path transform="translate(120 0) scale(-1 1)" d="M60 14 a44 44 0 0 1 38 66 l6 22 -23 -6 a44 44 0 1 1 -21 -82 z" fill="none" stroke="#fff" stroke-width="9" stroke-linejoin="round"/><path d="M44 42 c-4 4 -5 10 -1 17 c5 11 13 19 24 24 c7 3 13 2 17 -1 l2 -5 -11 -6 -5 5 c-7 -2 -13 -8 -15 -15 l5 -5 -6 -11 z" fill="#fff"/></svg>
+        Falar com o Rick no WhatsApp</a>
+    </section>
+
+    <p class="rodape">Depois me fala como foram as vendas! 😉<br>© Rick Ribeiro · <a href="/">rickribeiroads.com</a></p>
+  </main>
+</div>
+
+<script>
+/* =========================================================================
+   CONFIGURAÇÃO
+   SCRIPT_URL: o link do "App da Web" do Apps Script da planilha de compradores.
+   Enquanto estiver vazio, a página funciona em MODO DE TESTE (número 63 99999-1234).
+   ========================================================================= */
+var SCRIPT_URL = '';
+var WHATSAPP_RICK = '556399457700';
+var PIXEL_ID = '2805257373111925';
+
+var MODELOS = [
+  { nome: 'Modelo 1 · Produto a partir da foto',
+    texto: 'Crie uma imagem de anúncio para o status do WhatsApp, em formato vertical, usando a foto deste produto. Mantenha o produto igual ao da foto. Escreva na imagem: [NOME DO PRODUTO], o preço [R$ 00,00], a cidade [SUA CIDADE] e a frase "Compre pelo WhatsApp". Use letras grandes e fáceis de ler.' },
+  { nome: 'Modelo 2 · Serviço (sem foto)',
+    texto: 'Eu trabalho com [SEU SERVIÇO] em [SUA CIDADE]. Crie uma imagem de anúncio para o status do WhatsApp, em formato vertical. A imagem de fundo deve mostrar claramente o meu serviço e o problema que ele resolve. Escreva na imagem: "[SEU SERVIÇO] em [SUA CIDADE]" e a frase "Contrate pelo WhatsApp". Use letras grandes e fáceis de ler.' },
+  { nome: 'Modelo 3 · Sem cara de anúncio',
+    texto: 'Não quero uma imagem muito produzida. Use a minha foto original: melhore só a iluminação e a nitidez, mas mantenha tudo como está. Escreva na imagem, de um jeito informal: "[NOME DO PRODUTO] por [R$ 00,00]" e "Chama no WhatsApp". Formato vertical, para o status do WhatsApp.' },
+  { nome: 'Modelo 4 · Do rabisco ao anúncio',
+    texto: 'Transforme esta imagem em um anúncio para o status do WhatsApp, em formato vertical. Deixe o texto mais bonito e atraente, mas não mude as informações que eu escrevi nem a ordem delas.' },
+  { nome: 'Conserto · Saiu deitada ou quadrada', texto: 'Coloque em formato vertical, para o status do WhatsApp.' },
+  { nome: 'Conserto · O preço ficou pequeno', texto: 'Coloque o preço maior e mais no centro.' },
+  { nome: 'Conserto · Mudou o meu produto', texto: 'Não mude o produto. Ele precisa ficar igual ao da foto.' },
+  { nome: 'Opcional · Quer mais simples?', texto: 'Ficou muito exagerado. Deixe o texto menos formal e use uma fonte mais comum.' },
+  { nome: 'Boas-vindas · Modelo 1', texto: 'Olá! Que bom que você chamou 😊 Como posso te ajudar?' },
+  { nome: 'Boas-vindas · Modelo 2', texto: 'Oi! Obrigado pelo interesse. Me conta: o que você está procurando?' },
+  { nome: 'Boas-vindas · Modelo 3', texto: 'Olá! Aqui é [SEU NOME], da [SUA EMPRESA]. Já te passo todas as informações, só um minutinho!' }
+];
+
+/* ---------------- Modo de teste (só quando SCRIPT_URL está vazio) ---------------- */
+var MODO_TESTE = !SCRIPT_URL;
+function servidorDeTeste(pedido) {
+  return new Promise(function (ok) {
+    setTimeout(function () {
+      if (chaveDoNumero(pedido.tel) !== '6399991234') return ok({ ok: false, erro: 'nao_encontrado' });
+      if (pedido.acao === 'evento') return ok({ ok: true });
+      ok({ ok: true, nome: 'Maria', guia1: 'guia-rapido-1-como-subir-o-anuncio.pdf', guia2: 'guia-rapido-2-como-criar-a-imagem.pdf', aulas: [
+        { id: 'zpmN_cZz9qs', titulo: 'Aula 1 · Como subir o seu anúncio pelo WhatsApp Business', duracao: '23 min' },
+        { id: 'Y3UZF3OVSyQ', titulo: 'Aula Bônus · Como criar a imagem do seu anúncio com IA', duracao: '15 min' }] });
+    }, 700);
+  });
+}
+
+/* ---------------- Utilidades ---------------- */
+function so_digitos(t) { return String(t || '').replace(/\D/g, ''); }
+function esc(t) { return String(t || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+// Mesma regra da planilha: DDD + 8 últimos dígitos (com ou sem o 9, com ou sem 55/0)
+function chaveDoNumero(t) {
+  var d = so_digitos(t);
+  if (d.length >= 12 && d.indexOf('55') === 0) d = d.slice(2);
+  d = d.replace(/^0+/, '');
+  if (d.length < 10 || d.length > 11) return null;
+  return d.slice(0, 2) + d.slice(-8);
+}
+function formatar(d) {
+  d = so_digitos(d).slice(0, 11);
+  if (d.length <= 2) return d.length ? '(' + d : '';
+  var ddd = d.slice(0, 2), r = d.slice(2);
+  if (r.length <= 4) return '(' + ddd + ') ' + r;
+  if (d.length === 11) return '(' + ddd + ') ' + r.slice(0, 5) + '-' + r.slice(5);
+  return '(' + ddd + ') ' + r.slice(0, 4) + '-' + r.slice(4);
+}
+function mascarado(d) {
+  d = so_digitos(d);
+  return '(' + d.slice(0, 2) + ') •••••-' + d.slice(-4);
+}
+function linkWhats(texto) { return 'https://wa.me/' + WHATSAPP_RICK + '?text=' + encodeURIComponent(texto); }
+function pedir(dados) {
+  if (MODO_TESTE) return servidorDeTeste(dados);
+  // texto simples (sem cabeçalhos extras) para o Google aceitar o pedido vindo do site
+  return fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(dados) }).then(function (r) { return r.json(); });
+}
+function evento(nome, extra) {
+  try { if (window.fbq) fbq('trackCustom', nome, extra || {}); } catch (e) {}
+  try { if (window.gtag) gtag('event', nome, extra || {}); } catch (e) {}
+}
+
+/* ---------------- Entrada ---------------- */
+var campo = document.getElementById('tel');
+var botao = document.getElementById('botao-entrar');
+var caixaMsg = document.getElementById('mensagem');
+var telAtual = null;
+
+// o aviso com o número de teste só aparece no computador do Rick (nunca no site publicado)
+if (MODO_TESTE && /^(localhost|127\.0\.0\.1|)$/.test(location.hostname)) document.getElementById('aviso-teste').hidden = false;
+campo.addEventListener('input', function () {
+  campo.value = formatar(campo.value);
+  caixaMsg.className = 'mensagem';
+});
+
+function mostrarErro(html, comWhats) {
+  caixaMsg.innerHTML = html + (comWhats ? '<a class="botao botao-wpp" target="_blank" rel="noopener" href="' +
+    linkWhats('Olá, Rick! Não estou conseguindo entrar nas aulas. Meu número é ' + campo.value) +
+    '">Falar com o Rick no WhatsApp</a>' : '');
+  caixaMsg.className = 'mensagem erro';
+}
+
+document.getElementById('form-entrada').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var d = so_digitos(campo.value);
+  if (!chaveDoNumero(d)) {
+    mostrarErro('Confira o número: digite o <b>DDD e o número</b>, por exemplo (63) 99999-1234.', false);
+    campo.focus();
+    return;
+  }
+  botao.disabled = true;
+  botao.innerHTML = '<span class="carregando"></span> Procurando seu acesso…';
+  pedir({ acao: 'entrar', tel: d }).then(function (r) {
+    if (r && r.ok) { telAtual = d; abrirAulas(r); return; }
+    mostrarErro('Não encontramos esse número. <b>Confira se é o mesmo número que você usou para falar comigo.</b> ' +
+      'Se estiver certo, me chame que eu resolvo rapidinho:', true);
+  }).catch(function () {
+    mostrarErro('Não conseguimos conferir agora. <b>Verifique a sua internet</b> e toque em "Entrar" de novo.', false);
+  }).then(function () {
+    botao.disabled = false;
+    botao.textContent = 'Entrar nas minhas aulas';
+  });
+});
+
+/* ---------------- Área de aulas ---------------- */
+var players = [];
+var podeTelaCheia = !!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen);
+
+function abrirAulas(r) {
+  document.getElementById('nome-aluno').textContent = r.nome || 'aluno';
+  document.getElementById('entrada').style.display = 'none';
+  document.getElementById('aulas').style.display = 'block';
+  window.scrollTo(0, 0);
+
+  // pixel com o número (a própria Meta criptografa antes de enviar) e o evento de entrada
+  try { if (window.fbq) fbq('init', PIXEL_ID, { ph: '55' + telAtual, fn: String(r.nome || '').toLowerCase() }); } catch (e) {}
+  evento('AcessouAulas');
+
+  ['guia1', 'guia2'].forEach(function (g) {
+    var a = document.getElementById('baixar-' + g);
+    a.href = r[g];
+    a.addEventListener('click', function () { evento('BaixouGuia', { guia: g }); pedir({ acao: 'evento', tel: telAtual, evento: g }); });
+  });
+  document.getElementById('ajuda-wpp').href = linkWhats('Olá, Rick! Sou aluno(a) das aulas de anúncio pelo WhatsApp e preciso de uma ajuda.');
+
+  montarPrompts();
+  montarAulas(r.aulas || []);
+}
+
+function montarAulas(aulas) {
+  var lista = document.getElementById('lista-aulas');
+  lista.innerHTML = '';
+  aulas.forEach(function (a, i) {
+    var s = document.createElement('section');
+    s.className = 'aula';
+    s.innerHTML = '<span class="etiqueta">' + (i === 0 ? 'Comece por aqui' : 'Depois, esta') + ' · <span class="duracao">' + a.duracao + '</span></span>' +
+      '<h2>' + esc(a.titulo) + '</h2>' +
+      '<div class="video" id="video-' + i + '"><div id="player-' + i + '"></div>' +
+      '<div class="marca-dagua" id="marca-' + i + '">Acesso pessoal de ' + esc(document.getElementById('nome-aluno').textContent) + ' · ' + mascarado(telAtual) + '</div></div>' +
+      (podeTelaCheia ? '<button class="botao botao-claro botao-tela" type="button" data-i="' + i + '">⛶ Ver em tela cheia</button>' : '');
+    lista.appendChild(s);
+  });
+  lista.querySelectorAll('.botao-tela').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = document.getElementById('video-' + b.getAttribute('data-i'));
+      (v.requestFullscreen || v.webkitRequestFullscreen).call(v);
+      try { screen.orientation.lock('portrait').catch(function () {}); } catch (e) {}
+    });
+  });
+  moverMarcas();
+  carregarYouTube(function () {
+    aulas.forEach(function (a, i) { criarPlayer(a, i); });
+  });
+}
+
+// a marca d'água troca de canto de tempos em tempos
+var cantos = [['70px', '', '', '12px'], ['', '12px', '70px', ''], ['45%', '12px', '', ''], ['', '', '70px', '12px']];
+var canto = 0;
+function moverMarcas() {
+  document.querySelectorAll('.marca-dagua').forEach(function (m) {
+    var c = cantos[canto];
+    m.style.top = c[0] || 'auto'; m.style.right = c[1] || 'auto'; m.style.bottom = c[2] || 'auto'; m.style.left = c[3] || 'auto';
+  });
+  canto = (canto + 1) % cantos.length;
+}
+setInterval(moverMarcas, 20000);
+
+function carregarYouTube(pronto) {
+  if (window.YT && window.YT.Player) return pronto();
+  window.onYouTubeIframeAPIReady = pronto;
+  var s = document.createElement('script');
+  s.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(s);
+}
+
+function criarPlayer(aula, i) {
+  var marcos = {};   // 'play', 'metade', 'fim'
+  var n = i + 1;     // aula1, aula2
+  function registrar(marco, progresso) {
+    if (marcos[marco]) return;
+    marcos[marco] = true;
+    evento('AssistiuAula', { aula: n, progresso: progresso });
+    pedir({ acao: 'evento', tel: telAtual, evento: 'aula' + n + '_' + marco });
+  }
+  var p = new YT.Player('player-' + i, {
+    host: 'https://www.youtube-nocookie.com',
+    videoId: aula.id,
+    playerVars: { rel: 0, modestbranding: 1, playsinline: 1, fs: podeTelaCheia ? 0 : 1 },
+    events: {
+      onStateChange: function (e) {
+        if (e.data === YT.PlayerState.PLAYING) registrar('play', 0);
+        if (e.data === YT.PlayerState.ENDED) registrar('fim', 100);
+      }
+    }
+  });
+  players.push(p);
+  setInterval(function () {
+    try {
+      var d = p.getDuration(), t = p.getCurrentTime();
+      if (d > 0 && t / d >= 0.5) registrar('metade', 50);
+      if (d > 0 && t / d >= 0.95) registrar('fim', 100);
+    } catch (e) {}
+  }, 3000);
+}
+
+function montarPrompts() {
+  var lista = document.getElementById('lista-prompts');
+  lista.innerHTML = '';
+  MODELOS.forEach(function (m) {
+    var d = document.createElement('div');
+    d.className = 'prompt';
+    var html = m.texto.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\[([^\]]+)\]/g, '<span class="trocar">$1</span>');
+    d.innerHTML = '<span class="nome">' + m.nome + '</span><p>' + html + '</p>' +
+      '<button class="botao copiar" type="button">Copiar</button>';
+    d.querySelector('.copiar').addEventListener('click', function (ev) { copiar(m.texto, ev.currentTarget); });
+    lista.appendChild(d);
+  });
+}
+
+function copiar(texto, b) {
+  var feito = function () {
+    b.textContent = '✓ Copiado! Agora é só colar';
+    b.classList.add('feito');
+    setTimeout(function () { b.textContent = 'Copiar'; b.classList.remove('feito'); }, 2500);
+    evento('CopiouModelo');
+    pedir({ acao: 'evento', tel: telAtual, evento: 'copiou_prompt' });
+  };
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(texto).then(feito, function () { copiarAntigo(texto); feito(); });
+  } else { copiarAntigo(texto); feito(); }
+}
+function copiarAntigo(texto) {
+  var t = document.createElement('textarea');
+  t.value = texto; t.setAttribute('readonly', ''); t.style.position = 'fixed'; t.style.opacity = '0';
+  document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); } catch (e) {}
+  document.body.removeChild(t);
+}
+
+// Sair: volta para a tela de entrada (o número é pedido de novo em cada acesso)
+document.getElementById('sair').addEventListener('click', function () { location.reload(); });
+</script>
+</body>
+</html>
